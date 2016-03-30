@@ -1,0 +1,47 @@
+<resources>
+
+    <string name="app_name">RPTrello</string>
+    <string name="copyright">Copyright (c) 2015 RetroPoktan. All rights reserved.</string>
+
+    <!-- Common string -->
+    <string name="error_field_required">This field is required!</string>
+    <string name="error_network_unavailable">Network unavailable!</string>
+    <string name="loading">Loading...</string>
+
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+
+    <!-- Welcome -->
+    <string name="Welcome_title_first">Hello RPTrello!</string>
+    <string name="Welcome_content_first">Ready to start getting stuff done?</string>
+    <string name="Welcome_title_second">Get organized</string>
+    <string name="Welcome_content_second">Make a RPTrello board to organize anything with anyone.</string>
+    <string name="Welcome_title_third">Add details</string>
+    <string name="Welcome_content_third">Open cards to add pictures, checklists, and more.</string>
+    <string name="Welcome_title_forth">Team up</string>
+    <string name="Welcome_content_forth">Invite people to join your board, all for free.</string>
+
+    <!-- Login and Sign up -->
+    <string name="prompt_phone">Phone Number</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_user_name">Name</string>
+    <string name="action_login">LOGIN</string>
+    <string name="action_create_account">CREATE</string>
+    <string name="action_log_in">Log in</string>
+    <string name="action_cancel">CANCEL</string>
+    <string name="action_sign_up">Sign up</string>
+    <string name="action_reset_password">RESET PASSWORD</string>
+    <string name="action_send_sms_code">SEND SMS CODE</string>
+    <string name="error_invalid_phone">This phone number is invalid!</string>
+    <string name="error_invalid_password">This password is too short!</string>
+    <string name="error_incorrect_password">This password is incorrect!</string>
+    <string name="authenticating">Authenticating...</string>
+    <string name="tips_forget_password">Forget your password?</string>
+
+    <!-- Debug -->
+    <string name="test">test</string>
+
+    <string name="navigation_drawer_open">Open drawer</string>
+    <string name="navigation_drawer_close">Close drawer</string>
+
+</resources>

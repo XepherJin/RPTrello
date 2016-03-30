@@ -1,0 +1,6 @@
+<resources>
+
+    <!-- StatusBar's height -->
+    <dimen name="status_bar_height">24dp</dimen>
+
+</resources>

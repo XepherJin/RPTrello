@@ -1,0 +1,47 @@
+<resources>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="common_button_padding">12dp</dimen>
+
+    <dimen name="activity_splash_logo">120dp</dimen>
+    <dimen name="activity_splash_logo_top_margin">140dp</dimen>
+    <dimen name="activity_splash_copyright_bottom_margin">10dp</dimen>
+
+    <dimen name="activity_welcome_logo_top_margin">15dp</dimen>
+    <dimen name="activity_welcome_logo">60dp</dimen>
+    <dimen name="activity_welcome_vp_top_margin">10dp</dimen>
+    <dimen name="activity_welcome_fragment_image_height">224dp</dimen>
+    <dimen name="activity_welcome_fragment_text_width">224dp</dimen>
+    <dimen name="activity_welcome_fragment_text_top_margin">32dp</dimen>
+    <dimen name="activity_welcome_vp_indicator_height">10dp</dimen>
+
+    <dimen name="activity_auth_top_margin">20dp</dimen>
+    <dimen name="activity_auth_vertical_spacing">4dp</dimen>
+    <dimen name="activity_auth_btn_top_margin">12dp</dimen>
+    <dimen name="activity_auth_btn_left_padding">8dp</dimen>
+    <dimen name="activity_auth_btn_right_padding">8dp</dimen>
+    <dimen name="activity_auth_btn_min_width">64dp</dimen>
+    <dimen name="activity_auth_btn_horizontal_spacing">8dp</dimen>
+
+    <dimen name="activity_login_horizontal_margin">24dp</dimen>
+    <dimen name="activity_login_vertical_spacing">24dp</dimen>
+
+    <!-- StatusBar's height -->
+    <dimen name="status_bar_height">25dp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="card_margin">5dp</dimen>
+    <dimen name="drawer_header_vertical_spacing">16dp</dimen>
+    <dimen name="drawer_header_height">160dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="drawer_header_avatar">64dp</dimen>
+
+    <!-- Text size -->
+    <dimen name="text_size_super_small">10sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_base">14sp</dimen>
+    <dimen name="text_size_large">16sp</dimen>
+    <dimen name="text_size_super_large">18sp</dimen>
+    <dimen name="text_size_super_large_welcome">26sp</dimen>
+</resources>

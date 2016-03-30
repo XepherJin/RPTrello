@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- BezelImageView -->
+    <declare-styleable name="BezelImageView">
+        <attr name="maskDrawable" format="reference" />
+        <attr name="borderDrawable" format="reference" />
+        <attr name="desaturateOnPress" format="boolean" />
+    </declare-styleable>
+
+    <!-- CircleIndicator -->
+    <declare-styleable name="CircleIndicator">
+        <attr name="indicatorWidth" format="dimension" />
+        <attr name="indicatorHeight" format="dimension" />
+        <attr name="indicatorMargin" format="dimension" />
+        <attr name="animatorIn" format="reference" />
+        <attr name="animatorOut" format="reference" />
+        <attr name="indicatorDrawableSelected" format="reference" />
+        <attr name="indicatorDrawableUnselected" format="reference" />
+    </declare-styleable>
+
+</resources>

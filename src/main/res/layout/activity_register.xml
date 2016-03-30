@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_auth_top_margin">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/et_register_name_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_auth_vertical_spacing">
+
+        <EditText
+            android:id="@+id/et_register_name"
+            style="@style/EditText.Auth"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/prompt_user_name"
+            android:inputType="textPersonName|textCapWords|textNoSuggestions" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/et_register_phone_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_auth_vertical_spacing">
+
+        <EditText
+            android:id="@+id/et_register_phone"
+            style="@style/EditText.Auth"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/prompt_phone"
+            android:inputType="phone" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/et_register_password_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/et_register_password"
+            style="@style/EditText.Auth"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/prompt_password"
+            android:inputType="textPassword" />
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_auth_btn_top_margin"
+        android:gravity="right"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_register_cancel"
+            style="@style/Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8.0dip"
+            android:minWidth="@dimen/activity_auth_btn_min_width"
+            android:paddingLeft="@dimen/activity_auth_btn_horizontal_spacing"
+            android:paddingRight="@dimen/activity_auth_btn_horizontal_spacing"
+            android:text="@string/action_cancel"
+            android:textAllCaps="true"
+            android:textSize="@dimen/text_size_base" />
+
+        <Button
+            android:id="@+id/btn_register_create"
+            style="@style/Button.Common.Green"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.5"
+            android:enabled="false"
+            android:minWidth="@dimen/activity_auth_btn_min_width"
+            android:paddingLeft="@dimen/activity_auth_btn_horizontal_spacing"
+            android:paddingRight="@dimen/activity_auth_btn_horizontal_spacing"
+            android:text="@string/action_create_account"
+            android:textAllCaps="true"
+            android:textSize="@dimen/text_size_base" />
+    </LinearLayout>
+</LinearLayout>

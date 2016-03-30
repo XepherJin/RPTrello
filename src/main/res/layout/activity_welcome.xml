@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="@dimen/activity_welcome_logo"
+        android:layout_height="@dimen/activity_welcome_logo"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/activity_welcome_logo_top_margin"
+        android:src="@mipmap/ic_launcher"
+        android:transitionName="@string/app_name" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/activity_welcome_vp_top_margin"
+        android:layout_weight="1"
+        android:overScrollMode="never"></android.support.v4.view.ViewPager>
+
+    <com.retropoktan.rptrello.widget.CircleIndicator
+        android:id="@+id/vp_indicator_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/activity_welcome_vp_indicator_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp">
+
+    </com.retropoktan.rptrello.widget.CircleIndicator>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
+
+        <Button
+            android:id="@+id/btn_welcome_signup"
+            style="@style/Button.Welcome"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:text="@string/action_sign_up" />
+
+        <Button
+            android:id="@+id/btn_welcome_login"
+            style="@style/Button.Welcome"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:text="@string/action_log_in" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
