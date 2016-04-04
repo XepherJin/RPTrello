@@ -1,5 +1,6 @@
 package com.retropoktan.rptrello.ui.activity;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
@@ -49,6 +50,7 @@ public class MainActivity extends BaseActivity implements IView {
     public void onBackPressed() {
         if (mDrawer.isDrawerOpen(GravityCompat.START)) {
             mDrawer.closeDrawer(GravityCompat.START);
+            startActivity(new Intent(this, SettingsActivity.class));
         } else {
             super.onBackPressed();
         }
