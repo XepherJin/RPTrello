@@ -2,6 +2,7 @@ package com.retropoktan.rptrello.ui.presenter.base;
 
 import com.retropoktan.rptrello.ui.view.IView;
 
+import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
 /**
@@ -37,4 +38,17 @@ public abstract class BasePresenter<T extends IView> implements IPresenter<T> {
     protected void hideLoading() {
         mView.hideLoading();
     }
+
+    protected void addSubscription(Subscription subscription) {
+        if (mSubscription != null) {
+            mSubscription.add(subscription);
+        }
+    }
+
+    protected void removeSubscription(Subscription subscription) {
+        if (mSubscription != null) {
+            mSubscription.remove(subscription);
+        }
+    }
+
 }
