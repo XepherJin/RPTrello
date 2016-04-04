@@ -1,4 +1,4 @@
-package com.retropoktan.rptrello.ui.presenter;
+package com.retropoktan.rptrello.ui.presenter.base;
 
 import com.retropoktan.rptrello.ui.view.IView;
 
@@ -26,4 +26,15 @@ public abstract class BasePresenter<T extends IView> implements IPresenter<T> {
         mView = null;
     }
 
+    protected void showLoading() {
+        mView.showLoading();
+    }
+
+    protected void showLoadingError() {
+        mView.showLoadingError();
+    }
+
+    protected void hideLoading() {
+        mView.hideLoading();
+    }
 }

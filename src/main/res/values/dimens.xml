@@ -31,6 +31,7 @@
     <dimen name="status_bar_height">25dp</dimen>
 
     <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="recycler_padding">2.5dp</dimen>
     <dimen name="card_margin">5dp</dimen>
     <dimen name="drawer_header_vertical_spacing">16dp</dimen>
     <dimen name="drawer_header_height">160dp</dimen>

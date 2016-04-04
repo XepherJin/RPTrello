@@ -19,4 +19,9 @@
         <attr name="indicatorDrawableUnselected" format="reference" />
     </declare-styleable>
 
+    <!-- MultiSwipeRefreshLayout -->
+    <declare-styleable name="MultiSwipeRefreshLayout">
+        <attr name="foreground" format="reference" />
+    </declare-styleable>
+
 </resources>

@@ -78,7 +78,7 @@ public abstract class ToolbarBaseActivity extends BaseActivity {
     protected abstract void setToolbar(Toolbar toolbar);
 
     protected void onNavigationClick() {
-
+        finish();
     }
 
     @Override

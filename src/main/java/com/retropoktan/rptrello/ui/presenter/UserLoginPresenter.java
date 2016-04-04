@@ -1,6 +1,7 @@
 package com.retropoktan.rptrello.ui.presenter;
 
 import com.retropoktan.rptrello.model.UserUsecase;
+import com.retropoktan.rptrello.ui.presenter.base.BasePresenter;
 import com.retropoktan.rptrello.ui.view.IUserLoginView;
 
 import javax.inject.Inject;
