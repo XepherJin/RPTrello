@@ -43,11 +43,6 @@ public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior {
         }
     }
 
-    @Override
-    public boolean onDependentViewChanged(CoordinatorLayout parent, FloatingActionButton child, View dependency) {
-        return super.onDependentViewChanged(parent, child, dependency);
-    }
-
     private void animate(final FloatingActionButton fab, boolean isIn) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             if (mViewPropertyAnimatorListener == null) {
@@ -143,5 +138,6 @@ public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior {
     private interface FABAnimatorListener extends ViewPropertyAnimatorListener {
         void setAnimatorIn(boolean isIn);
     }
+
 }
 
