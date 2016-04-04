@@ -2,7 +2,9 @@ package com.retropoktan.rptrello.ui.activity;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -50,7 +52,11 @@ public class MainActivity extends BaseActivity implements IView {
     public void onBackPressed() {
         if (mDrawer.isDrawerOpen(GravityCompat.START)) {
             mDrawer.closeDrawer(GravityCompat.START);
-            startActivity(new Intent(this, SettingsActivity.class));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                startActivity(new Intent(this, SettingsActivity.class), ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+            } else {
+                startActivity(new Intent(this, SettingsActivity.class));
+            }
         } else {
             super.onBackPressed();
         }

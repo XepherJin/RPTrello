@@ -14,9 +14,9 @@ public abstract class SwipeRefreshBaseActivity extends ToolbarBaseActivity {
 
     protected boolean isRefreshing;
     @Bind(R.id.swipe_refresh_layout)
-    SwipeRefreshLayout swipeRefreshLayout;
+    protected SwipeRefreshLayout swipeRefreshLayout;
     @Bind(R.id.recycler_view)
-    RecyclerView recyclerView;
+    protected RecyclerView recyclerView;
 
     public boolean isRefreshing() {
         return isRefreshing;
