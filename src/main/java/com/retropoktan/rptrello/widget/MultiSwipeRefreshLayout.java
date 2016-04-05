@@ -29,6 +29,7 @@ import com.retropoktan.rptrello.R;
  * Created by RetroPoktan on 4/4/16.
  */
 public class MultiSwipeRefreshLayout extends SwipeRefreshLayout {
+
     private CanChildScrollUpCallback mCanChildScrollUpCallback;
 
     private Drawable mForegroundDrawable;

@@ -30,8 +30,8 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
 
     @Inject
     UserLoginPresenter presenter;
-    @Bind(R.id.et_login_phone_layout)
-    TextInputLayout phone_layout;
+    @Bind(R.id.et_login_email_layout)
+    TextInputLayout email_layout;
     @Bind(R.id.et_login_password_layout)
     TextInputLayout password_layout;
     @Bind(R.id.btn_login_cancel)
@@ -41,8 +41,8 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     @Bind(R.id.iv_forget_password)
     ImageView iv_forget_password;
 
-    @BindString(R.string.error_invalid_phone)
-    String errorPhone;
+    @BindString(R.string.error_invalid_email)
+    String errorEmail;
     @BindString(R.string.error_incorrect_password)
     String wrongPassword;
     @BindString(R.string.loading)
@@ -95,8 +95,8 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     }
 
     @Override
-    public String getPhoneNum() {
-        return phone_layout.getEditText().getText().toString().trim();
+    public String getEmail() {
+        return email_layout.getEditText().getText().toString().trim();
     }
 
     @Override
@@ -117,13 +117,13 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     }
 
     @Override
-    public void phoneNumError() {
-        phone_layout.setError(errorPhone);
+    public void emailError() {
+        email_layout.setError(errorEmail);
     }
 
     @Override
     public void passwordError() {
-        phone_layout.setError(wrongPassword);
+        password_layout.setError(wrongPassword);
     }
 
     @Override

@@ -4,7 +4,7 @@ package com.retropoktan.rptrello.ui.view;
  * Created by RetroPoktan on 12/25/15.
  */
 public interface IUserLoginView extends IView {
-    String getPhoneNum();
+    String getEmail();
 
     String getPassword();
 
@@ -12,7 +12,7 @@ public interface IUserLoginView extends IView {
 
     void actionDisabled();
 
-    void phoneNumError();
+    void emailError();
 
     void passwordError();
 

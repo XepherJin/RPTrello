@@ -8,17 +8,17 @@
     android:paddingTop="@dimen/activity_auth_top_margin">
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/et_login_phone_layout"
+        android:id="@+id/et_login_email_layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/et_login_phone"
+            android:id="@+id/et_login_email"
             style="@style/EditText.Auth"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/prompt_phone"
-            android:inputType="phone" />
+            android:hint="@string/prompt_email"
+            android:inputType="textEmailAddress" />
     </android.support.design.widget.TextInputLayout>
 
     <FrameLayout

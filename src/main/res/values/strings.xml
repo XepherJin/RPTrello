@@ -22,7 +22,7 @@
     <string name="Welcome_content_forth">Invite people to join your board, all for free.</string>
 
     <!-- Login and Sign up -->
-    <string name="prompt_phone">Phone Number</string>
+    <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="prompt_user_name">Name</string>
     <string name="action_login">LOGIN</string>
@@ -32,7 +32,8 @@
     <string name="action_sign_up">Sign up</string>
     <string name="action_reset_password">RESET PASSWORD</string>
     <string name="action_send_sms_code">SEND SMS CODE</string>
-    <string name="error_invalid_phone">This phone number is invalid!</string>
+    <string name="error_invalid_name">This name is too short!</string>
+    <string name="error_invalid_email">This email is invalid!</string>
     <string name="error_invalid_password">This password is too short!</string>
     <string name="error_incorrect_password">This password is incorrect!</string>
     <string name="authenticating">Authenticating...</string>
