@@ -5,8 +5,7 @@ package com.retropoktan.rptrello.ui.view;
  */
 public interface IAdapterView extends IView {
     void showRetry();
-
     void hideRetry();
-
-    void initAdapter();
+    void showEmpty();
+    void hideEmpty();
 }

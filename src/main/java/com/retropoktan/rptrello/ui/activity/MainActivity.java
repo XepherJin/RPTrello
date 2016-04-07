@@ -13,12 +13,12 @@ import android.view.MenuItem;
 
 import com.retropoktan.rptrello.R;
 import com.retropoktan.rptrello.ui.base.BaseActivity;
-import com.retropoktan.rptrello.ui.view.IView;
+import com.retropoktan.rptrello.ui.view.IMainView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity implements IView {
+public class MainActivity extends BaseActivity implements IMainView {
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;

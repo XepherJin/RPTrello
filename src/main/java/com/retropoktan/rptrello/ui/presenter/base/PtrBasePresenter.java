@@ -25,6 +25,14 @@ public abstract class PtrBasePresenter<T extends IAdapterView> extends BasePrese
         mView.hideRetry();
     }
 
+    protected void showEmpty() {
+        mView.showEmpty();
+    }
+
+    protected void hideEmpty() {
+        mView.hideEmpty();
+    }
+
     protected abstract void loadMore();
 
     protected abstract void refresh(boolean isNew);

@@ -93,7 +93,10 @@ public abstract class ToolbarBaseActivity extends BaseActivity {
 
     protected abstract int setContentView();
 
-    protected abstract boolean withFAB();
+    // default without fab
+    protected boolean withFAB() {
+        return false;
+    }
 
     protected abstract boolean canBack();
 }
