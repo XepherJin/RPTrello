@@ -1,6 +1,6 @@
 package com.retropoktan.rptrello.ui.presenter;
 
-import com.retropoktan.rptrello.model.UserUsecase;
+import com.retropoktan.rptrello.model.UserModel;
 import com.retropoktan.rptrello.ui.presenter.base.BasePresenter;
 import com.retropoktan.rptrello.ui.view.IUserRegisterView;
 
@@ -11,11 +11,11 @@ import javax.inject.Inject;
  */
 public class UserRegisterPresenter extends BasePresenter<IUserRegisterView> {
 
-    private final UserUsecase mUserUsecase;
+    private final UserModel mUserModel;
 
     @Inject
-    public UserRegisterPresenter(UserUsecase userUsecase) {
-        mUserUsecase = userUsecase;
+    public UserRegisterPresenter(UserModel UserModel) {
+        mUserModel = UserModel;
     }
 
 }

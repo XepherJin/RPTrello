@@ -1,6 +1,6 @@
 package com.retropoktan.rptrello.ui.presenter;
 
-import com.retropoktan.rptrello.model.UserUsecase;
+import com.retropoktan.rptrello.model.UserModel;
 import com.retropoktan.rptrello.ui.presenter.base.BasePresenter;
 import com.retropoktan.rptrello.ui.view.IUserLoginView;
 
@@ -13,15 +13,15 @@ import rx.Subscriber;
  */
 public class UserLoginPresenter extends BasePresenter<IUserLoginView> {
 
-    private final UserUsecase mUserUsecase;
+    private final UserModel mUserModel;
 
     @Inject
-    public UserLoginPresenter(UserUsecase userUsecase) {
-        mUserUsecase = userUsecase;
+    public UserLoginPresenter(UserModel UserModel) {
+        mUserModel = UserModel;
     }
 
     public void login() {
-        addSubscription(mUserUsecase
+        addSubscription(mUserModel
                 .execLogin(new Subscriber() {
                     @Override
                     public void onCompleted() {

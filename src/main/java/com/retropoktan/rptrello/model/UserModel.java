@@ -10,11 +10,11 @@ import rx.Subscription;
 /**
  * Created by RetroPoktan on 2/10/16.
  */
-public class UserUsecase extends Usecase {
+public class UserModel extends BaseModel {
 
     private User mUser;
 
-    public UserUsecase(User user, DataManager dataManager,
+    public UserModel(User user, DataManager dataManager,
                        Scheduler uiScheduler, Scheduler ioScheduler) {
         super(dataManager, uiScheduler, ioScheduler);
         mUser = user;
