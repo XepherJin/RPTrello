@@ -1,5 +1,6 @@
 package com.retropoktan.rptrello.ui.activity;
 
+import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -23,8 +24,8 @@ public class SettingsActivity extends SwipeRefreshBaseActivity {
     }
 
     @Override
-    protected void initViews() {
-        super.initViews();
+    protected void initViews(Bundle savedInstanceState) {
+        super.initViews(savedInstanceState);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new BoardAdapter(this));

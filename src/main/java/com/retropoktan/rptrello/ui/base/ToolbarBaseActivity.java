@@ -52,10 +52,10 @@ public abstract class ToolbarBaseActivity extends BaseActivity {
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             }
         }
-        initViews();
+        initViews(savedInstanceState);
     }
 
-    protected abstract void initViews();
+    protected abstract void initViews(Bundle savedInstanceState);
 
     protected void changeLayoutParams(CoordinatorLayout.LayoutParams lp) {
 
