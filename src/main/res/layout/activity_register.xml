@@ -48,8 +48,41 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:maxLength="20" />
     </android.support.design.widget.TextInputLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_auth_vertical_spacing">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/et_register_code_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/et_register_code"
+                style="@style/EditText.Auth"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_code"
+                android:inputType="number"
+                android:maxLength="8" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_get_code"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_gravity="center|right"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/btn_welcome"
+            android:text="@string/action_get_code"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_small" />
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"

@@ -24,4 +24,26 @@ public class UserModel extends BaseModel {
         return subscriber;
     }
 
+    public void getCode() {
+        mDataManager.getClientApi().getCode("575508330@qq.com")
+                .subscribeOn(mIOScheduler)
+                .observeOn(mUIScheduler)
+                .subscribe(new Subscriber<String>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+
+                    }
+                });
+    }
+
 }

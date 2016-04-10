@@ -20,7 +20,8 @@ import retrofit.RxJavaCallAdapterFactory;
 @Module
 public class ClientApiModule {
     private static final int API_VERSION = 1;
-    private static final String BASE_URL = "https://api.trello.com/" + API_VERSION + "/";
+    private static final String API = "v" + API_VERSION;
+    private static final String BASE_URL = "http://203.88.161.15:9000/" + API + "/";
 
     @Provides
     @PerDataManager

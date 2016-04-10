@@ -33,10 +33,14 @@ public class RegisterActivity extends BaseActivity implements IUserRegisterView 
     TextInputLayout email_layout;
     @Bind(R.id.et_register_password_layout)
     TextInputLayout password_layout;
+    @Bind(R.id.et_register_code_layout)
+    TextInputLayout code_layout;
     @Bind(R.id.btn_register_cancel)
     Button btn_cancel;
     @Bind(R.id.btn_register_create)
     Button btn_create;
+    @Bind(R.id.btn_get_code)
+    Button btn_code;
 
     @BindString(R.string.error_invalid_name)
     String errorName;
@@ -104,6 +108,26 @@ public class RegisterActivity extends BaseActivity implements IUserRegisterView 
     }
 
     @Override
+    public String getCode() {
+        return code_layout.getEditText().getText().toString().trim();
+    }
+
+    @Override
+    public void getCodeEnabled() {
+
+    }
+
+    @Override
+    public void getCodeDisabled() {
+
+    }
+
+    @Override
+    public void invalidateSecond(int second) {
+
+    }
+
+    @Override
     public String getEmail() {
         return email_layout.getEditText().getText().toString().trim();
     }
@@ -136,6 +160,11 @@ public class RegisterActivity extends BaseActivity implements IUserRegisterView 
     @Override
     public void loginSuccess() {
 
+    }
+
+    @OnClick(R.id.btn_get_code)
+    void getVerifyCode() {
+        presenter.getCode();
     }
 
     @Override

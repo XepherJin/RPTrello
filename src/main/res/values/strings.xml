@@ -25,12 +25,14 @@
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="prompt_user_name">Name</string>
+    <string name="prompt_code">Code</string>
     <string name="action_login">LOGIN</string>
     <string name="action_create_account">CREATE</string>
     <string name="action_log_in">Log in</string>
     <string name="action_cancel">CANCEL</string>
     <string name="action_sign_up">Sign up</string>
     <string name="action_reset_password">RESET PASSWORD</string>
+    <string name="action_get_code">GET CODE</string>
     <string name="action_send_sms_code">SEND SMS CODE</string>
     <string name="error_invalid_name">This name is too short!</string>
     <string name="error_invalid_email">This email is invalid!</string>

@@ -17,8 +17,9 @@
 
     </style>
 
-    <style name="Button.Green">
+    <style name="Button.Common.Green">
         <item name="android:backgroundTint">@android:color/holo_green_dark</item>
+        <item name="android:textColor">?attr/colorAccent</item>
     </style>
 
     <!-- Theme for MainActivity -->

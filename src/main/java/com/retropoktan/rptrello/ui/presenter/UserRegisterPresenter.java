@@ -18,4 +18,8 @@ public class UserRegisterPresenter extends BasePresenter<IUserRegisterView> {
         mUserModel = UserModel;
     }
 
+    public void getCode() {
+        mUserModel.getCode();
+    }
+
 }
