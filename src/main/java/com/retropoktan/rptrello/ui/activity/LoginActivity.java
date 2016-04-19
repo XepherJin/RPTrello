@@ -159,4 +159,5 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
         presenter.onDestroy();
         presenter = null;
     }
+
 }

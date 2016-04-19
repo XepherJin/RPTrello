@@ -1,10 +1,10 @@
 package com.retropoktan.rptrello.ui.activity;
 
-import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityOptionsCompat;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,6 +13,9 @@ import android.view.MenuItem;
 
 import com.retropoktan.rptrello.R;
 import com.retropoktan.rptrello.ui.base.BaseActivity;
+import com.retropoktan.rptrello.ui.fragment.AllBoardsFragment;
+import com.retropoktan.rptrello.ui.fragment.AllTeamsFragment;
+import com.retropoktan.rptrello.ui.presenter.MainActivityPresenter;
 import com.retropoktan.rptrello.ui.view.IMainView;
 
 import butterknife.Bind;
@@ -24,8 +27,16 @@ public class MainActivity extends BaseActivity implements IMainView {
     Toolbar mToolbar;
     @Bind(R.id.drawerlayout_main)
     DrawerLayout mDrawer;
+    @Bind(R.id.nav_view_main)
+    NavigationView mNavigationView;
 
-    ActionBarDrawerToggle toggle;
+    private ActionBarDrawerToggle toggle;
+
+    private int currentItem = -1;
+    private AllBoardsFragment boardsFragment;
+    private AllTeamsFragment teamsFragment;
+
+    private MainActivityPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +52,7 @@ public class MainActivity extends BaseActivity implements IMainView {
                 this, mDrawer,
                 R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close);
+        presenter.switchFragment(AllBoardsFragment.TYPE);
     }
 
     @Override
@@ -50,16 +62,10 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     public void onBackPressed() {
-        if (mDrawer.isDrawerOpen(GravityCompat.START)) {
-            mDrawer.closeDrawer(GravityCompat.START);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                startActivity(new Intent(this, SettingsActivity.class), ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
-            } else {
-                startActivity(new Intent(this, SettingsActivity.class));
-            }
-        } else {
-            super.onBackPressed();
+        if (presenter.onBackPressed()) {
+            return;
         }
+        super.onBackPressed();
     }
 
     @Override
@@ -78,23 +84,31 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     protected void setupComponent() {
-        // TODO: 2/17/16  
+        presenter = new MainActivityPresenter();
     }
 
     @Override
     protected void destroyPresenter() {
-        // TODO: 2/17/16  
+        presenter.onDestroy();
+        presenter = null;
     }
 
     @Override
     protected void attachViewForPresenter() {
-        // TODO: 2/17/16
+        presenter.attachView(this);
     }
 
     @Override
     protected void addListeners() {
-        mDrawer.setDrawerListener(toggle);
+        mDrawer.addDrawerListener(toggle);
         toggle.syncState();
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                presenter.switchFragment(item);
+                return true;
+            }
+        });
     }
 
     @Override
@@ -111,4 +125,63 @@ public class MainActivity extends BaseActivity implements IMainView {
     public void showLoadingError() {
 
     }
+
+    @Override
+    public void setToolbarTitle(CharSequence text) {
+        if (mToolbar != null) {
+            mToolbar.setTitle(text);
+        }
+    }
+
+    @Override
+    public void setToolbarTitle(int resId) {
+        setToolbarTitle(getResources().getString(resId));
+    }
+
+    @Override
+    public FragmentManager fragmentManager() {
+        return getSupportFragmentManager();
+    }
+
+    @Override
+    public int currentItemId() {
+        return currentItem;
+    }
+
+    @Override
+    public void setCurrentItemId(int itemId) {
+        currentItem = itemId;
+    }
+
+    @Override
+    public Fragment boardsFragment() {
+        if (boardsFragment == null) {
+            boardsFragment = AllBoardsFragment.newInstance();
+        }
+        return boardsFragment;
+    }
+
+    @Override
+    public Fragment teamsFragment() {
+        if (teamsFragment == null) {
+            teamsFragment = AllTeamsFragment.newInstance();
+        }
+        return teamsFragment;
+    }
+
+    @Override
+    public void closeDrawer() {
+        mDrawer.closeDrawer(GravityCompat.START);
+    }
+
+    @Override
+    public boolean isDrawerOpen() {
+        return mDrawer.isDrawerOpen(GravityCompat.START);
+    }
+
+    @Override
+    public boolean moveTaskToBack() {
+        return moveTaskToBack(true);
+    }
+
 }

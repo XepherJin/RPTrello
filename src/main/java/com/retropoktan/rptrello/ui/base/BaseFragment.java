@@ -35,7 +35,14 @@ public abstract class BaseFragment extends Fragment {
         }
         ButterKnife.bind(this, root);
         initViews();
+        if (getContext() != null) {
+            setupComponent();
+        }
         return root;
+    }
+
+    protected void setupComponent() {
+
     }
 
     protected abstract void initViews();

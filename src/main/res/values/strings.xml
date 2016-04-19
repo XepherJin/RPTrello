@@ -47,4 +47,10 @@
     <string name="navigation_drawer_open">Open drawer</string>
     <string name="navigation_drawer_close">Close drawer</string>
 
+    <!-- Boards -->
+    <string name="Boards_title">Boards</string>
+
+    <!-- Teams -->
+    <string name="Teams_title">Teams</string>
+
 </resources>

@@ -1,7 +1,8 @@
 package com.retropoktan.rptrello.inject.module;
 
+import android.content.Context;
+
 import com.retropoktan.rptrello.inject.scope.PerActivity;
-import com.retropoktan.rptrello.ui.base.BaseActivity;
 
 import dagger.Module;
 import dagger.Provides;
@@ -12,15 +13,15 @@ import dagger.Provides;
 @Module
 public class ActivityModule {
 
-    private final BaseActivity activity;
+    private final Context activity;
 
-    public ActivityModule(BaseActivity activity) {
+    public ActivityModule(Context activity) {
         this.activity = activity;
     }
 
     @Provides
     @PerActivity
-    BaseActivity provideActivityContext() {
+    Context provideActivityContext() {
         return activity;
     }
 

@@ -1,8 +1,9 @@
 package com.retropoktan.rptrello.inject.component;
 
+import android.content.Context;
+
 import com.retropoktan.rptrello.inject.module.ActivityModule;
 import com.retropoktan.rptrello.inject.scope.PerActivity;
-import com.retropoktan.rptrello.ui.base.BaseActivity;
 
 import dagger.Component;
 
@@ -12,5 +13,5 @@ import dagger.Component;
 @PerActivity
 @Component(modules = ActivityModule.class)
 public interface ActivityComponent {
-    BaseActivity getActivity();
+    Context getActivity();
 }

@@ -3,7 +3,6 @@ package com.retropoktan.rptrello.inject.component;
 import com.retropoktan.rptrello.data.DataManager;
 import com.retropoktan.rptrello.inject.module.ApplicationModule;
 import com.retropoktan.rptrello.model.entity.User;
-import com.squareup.otto.Bus;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -17,7 +16,6 @@ import rx.Scheduler;
 @Singleton
 @Component(modules = ApplicationModule.class)
 public interface ApplicationComponent {
-    Bus getEventBus();
 
     User getUser();
 
