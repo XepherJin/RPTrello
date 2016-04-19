@@ -61,4 +61,5 @@ public class MainActivityPresenter extends BasePresenter<IMainView> {
         }
         return mView.moveTaskToBack();
     }
+
 }

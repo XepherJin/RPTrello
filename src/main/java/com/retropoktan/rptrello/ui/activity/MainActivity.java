@@ -23,6 +23,8 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements IMainView {
 
+    private static final String FRAGMENT_INDEX = "FRAGMENT_INDEX";
+
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
     @Bind(R.id.drawerlayout_main)
@@ -42,16 +44,20 @@ public class MainActivity extends BaseActivity implements IMainView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-        initViews();
+        initViews(savedInstanceState);
     }
 
-    private void initViews() {
+    private void initViews(Bundle savedInstanceState) {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toggle = new ActionBarDrawerToggle(
                 this, mDrawer,
                 R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close);
+        if (savedInstanceState != null && savedInstanceState.containsKey(FRAGMENT_INDEX)) {
+            presenter.switchFragment(savedInstanceState.getInt(FRAGMENT_INDEX, AllBoardsFragment.TYPE));
+            return;
+        }
         presenter.switchFragment(AllBoardsFragment.TYPE);
     }
 
@@ -74,6 +80,12 @@ public class MainActivity extends BaseActivity implements IMainView {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(FRAGMENT_INDEX, currentItem);
     }
 
     @Override
