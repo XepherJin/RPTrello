@@ -54,4 +54,7 @@
     <!-- Teams -->
     <string name="Teams_title">Teams</string>
 
+    <!-- All Cards -->
+    <string name="All_cards_title">All Cards</string>
+
 </resources>

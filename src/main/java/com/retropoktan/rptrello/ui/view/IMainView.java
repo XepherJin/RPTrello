@@ -21,6 +21,8 @@ public interface IMainView extends IView {
 
     Fragment teamsFragment();
 
+    Fragment cardsFragment();
+
     void closeDrawer();
 
     boolean isDrawerOpen();

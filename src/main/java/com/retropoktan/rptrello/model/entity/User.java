@@ -7,7 +7,7 @@ import android.text.TextUtils;
 /**
  * Created by RetroPoktan on 2/10/16.
  */
-public class User implements Parcelable {
+public class User extends Member implements Parcelable {
 
     public static final String TAG = "user";
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -21,11 +21,7 @@ public class User implements Parcelable {
             return new User[size];
         }
     };
-    private long id;
-    private String nick;
-    private String email;
-    private String avatar;
-    private String token;
+    protected String token;
 
     public User() {
 
@@ -40,7 +36,7 @@ public class User implements Parcelable {
     }
 
     public boolean isAvailable() {
-        return !TextUtils.isEmpty(token);
+        return !TextUtils.isEmpty(email);
     }
 
     public String getToken() {
@@ -49,38 +45,6 @@ public class User implements Parcelable {
 
     public void setToken(String token) {
         this.token = token;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNick() {
-        return nick;
-    }
-
-    public void setNick(String nick) {
-        this.nick = nick;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     @Override

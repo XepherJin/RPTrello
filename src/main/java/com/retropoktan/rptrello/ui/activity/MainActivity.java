@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import com.retropoktan.rptrello.R;
 import com.retropoktan.rptrello.ui.base.BaseActivity;
 import com.retropoktan.rptrello.ui.fragment.AllBoardsFragment;
+import com.retropoktan.rptrello.ui.fragment.AllCardsFragment;
 import com.retropoktan.rptrello.ui.fragment.AllTeamsFragment;
 import com.retropoktan.rptrello.ui.presenter.MainActivityPresenter;
 import com.retropoktan.rptrello.ui.view.IMainView;
@@ -37,6 +38,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     private int currentItem = -1;
     private AllBoardsFragment boardsFragment;
     private AllTeamsFragment teamsFragment;
+    private AllCardsFragment cardsFragment;
 
     private MainActivityPresenter presenter;
 
@@ -179,6 +181,14 @@ public class MainActivity extends BaseActivity implements IMainView {
             teamsFragment = AllTeamsFragment.newInstance();
         }
         return teamsFragment;
+    }
+
+    @Override
+    public Fragment cardsFragment() {
+        if (cardsFragment == null) {
+            cardsFragment = AllCardsFragment.newInstance();
+        }
+        return cardsFragment;
     }
 
     @Override

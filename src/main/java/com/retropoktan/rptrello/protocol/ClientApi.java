@@ -16,6 +16,7 @@ import rx.Observable;
  */
 public interface ClientApi {
 
+    /////////////////// user ////////////
     @GET("get_validate_code")
     Observable<Msg> getCode(@Query("email") String email);
 
@@ -24,4 +25,6 @@ public interface ClientApi {
 
     @POST("login")
     Observable<Msg<User>> login(@Body UserLoginReq req);
+
+    //////////////// board //////////////
 }
