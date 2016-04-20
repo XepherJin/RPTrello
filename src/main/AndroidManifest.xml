@@ -31,10 +31,12 @@
             android:theme="@style/AppTheme.Launcher" />
         <activity
             android:name=".ui.activity.LoginActivity"
-            android:theme="@style/AppTheme.Launcher" />
+            android:theme="@style/AppTheme.Launcher"
+            android:windowSoftInputMode="stateAlwaysVisible" />
         <activity
             android:name=".ui.activity.RegisterActivity"
-            android:theme="@style/AppTheme.Launcher" />
+            android:theme="@style/AppTheme.Launcher"
+            android:windowSoftInputMode="stateAlwaysVisible" />
         <activity
             android:name=".ui.activity.ForgetPasswordActivity"
             android:theme="@style/AppTheme.Launcher" />

@@ -65,17 +65,25 @@ public class DBHelper {
         }
     }
 
-    public <T> Observable<T> get(String key, Class<T> clazz) {
+    public <T> Observable<T> getAsync(String key, Class<T> clazz) {
         return Reservoir.getAsync(key, clazz);
+    }
 
+    public <T> T get(String key, Class<T> clazz) {
+        try {
+            return Reservoir.get(key, clazz);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public <T> Observable<T> get(Class<T> clazz) {
         String key = clazz.getSimpleName();
-        return get(key, clazz);
+        return getAsync(key, clazz);
     }
 
-    public <T> void get(String key, Type typeOfT, ReservoirGetCallback<T> callback) {
+    public <T> void getAsync(String key, Type typeOfT, ReservoirGetCallback<T> callback) {
         Reservoir.getAsync(key, typeOfT, callback);
     }
 }

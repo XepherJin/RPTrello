@@ -1,7 +1,9 @@
 package com.retropoktan.rptrello.ui.presenter.base;
 
+import com.retropoktan.rptrello.model.entity.Msg;
 import com.retropoktan.rptrello.ui.view.IView;
 
+import rx.Subscriber;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
@@ -31,8 +33,8 @@ public abstract class BasePresenter<T extends IView> implements IPresenter<T> {
         mView.showLoading();
     }
 
-    protected void showLoadingError() {
-        mView.showLoadingError();
+    protected void showLoadingError(CharSequence errMsg) {
+        mView.showLoadingError(errMsg);
     }
 
     protected void hideLoading() {
@@ -49,6 +51,33 @@ public abstract class BasePresenter<T extends IView> implements IPresenter<T> {
         if (mSubscription != null) {
             mSubscription.remove(subscription);
         }
+    }
+
+    protected abstract class DefaultSubscriber<T extends Msg> extends Subscriber<T> {
+
+        @Override
+        public void onCompleted() {
+            removeSubscription(this);
+            mView.hideLoading();
+        }
+
+        @Override
+        public void onError(Throwable e) {
+            removeSubscription(this);
+            mView.hideLoading();
+            parseError(e);
+        }
+
+        protected void parseError(Throwable e) {
+            mView.showLoadingError("加载失败");
+        }
+
+        @Override
+        public void onNext(T t) {
+            parseMsg(t);
+        }
+
+        protected abstract void parseMsg(T t);
     }
 
 }

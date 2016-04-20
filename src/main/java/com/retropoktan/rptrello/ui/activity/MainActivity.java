@@ -134,7 +134,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     }
 
     @Override
-    public void showLoadingError() {
+    public void showLoadingError(CharSequence errMsg) {
 
     }
 

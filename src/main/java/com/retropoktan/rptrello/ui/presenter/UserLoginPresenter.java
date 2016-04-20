@@ -1,12 +1,16 @@
 package com.retropoktan.rptrello.ui.presenter;
 
 import com.retropoktan.rptrello.model.UserModel;
+import com.retropoktan.rptrello.model.entity.Msg;
+import com.retropoktan.rptrello.model.entity.User;
+import com.retropoktan.rptrello.model.req.UserLoginReq;
 import com.retropoktan.rptrello.ui.presenter.base.BasePresenter;
 import com.retropoktan.rptrello.ui.view.IUserLoginView;
+import com.retropoktan.rptrello.utils.MD5Util;
 
 import javax.inject.Inject;
 
-import rx.Subscriber;
+import rx.Subscription;
 
 /**
  * Created by RetroPoktan on 2/10/16.
@@ -21,28 +25,29 @@ public class UserLoginPresenter extends BasePresenter<IUserLoginView> {
     }
 
     public void login() {
-        addSubscription(mUserModel
-                .execLogin(new Subscriber() {
-                    @Override
-                    public void onCompleted() {
-                        removeSubscription(this);
-                    }
+        mView.showLoading();
+        UserLoginReq req = new UserLoginReq();
+        req.setEmail(mView.getEmail());
+        req.setPassword(MD5Util.encode(mView.getPassword()));
+        Subscription subscription = mUserModel.execLogin(req,
+                new DefaultSubscriber<Msg<User>>() {
 
                     @Override
-                    public void onError(Throwable e) {
-                        removeSubscription(this);
+                    protected void parseMsg(Msg<User> msg) {
+                        if (msg.isResultOK()) {
+                            User user = msg.getData();
+                            if (user != null) {
+                                mUserModel.saveUser(user);
+                                mView.loginSuccess(user);
+                                return;
+                            }
+                            mView.showLoadingError(msg.getMsg());
+                            return;
+                        }
+                        mView.showLoadingError(msg.getMsg());
                     }
-
-                    @Override
-                    public void onNext(Object o) {
-
-                    }
-                }));
-        mView.loginSuccess();
-    }
-
-    private void validateInput(String phone, String password) {
-
+                });
+        addSubscription(subscription);
     }
 
 }

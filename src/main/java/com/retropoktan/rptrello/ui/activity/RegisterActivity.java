@@ -1,12 +1,15 @@
 package com.retropoktan.rptrello.ui.activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
+import android.text.TextUtils;
 import android.widget.Button;
 
 import com.retropoktan.rptrello.R;
 import com.retropoktan.rptrello.inject.module.ActivityModule;
+import com.retropoktan.rptrello.model.entity.User;
 import com.retropoktan.rptrello.ui.base.BaseActivity;
 import com.retropoktan.rptrello.ui.inject.component.DaggerUserComponent;
 import com.retropoktan.rptrello.ui.inject.module.UserModule;
@@ -19,6 +22,7 @@ import butterknife.Bind;
 import butterknife.BindString;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnTextChanged;
 
 /**
  * Created by RetroPoktan on 2/5/16.
@@ -59,11 +63,54 @@ public class RegisterActivity extends BaseActivity implements IUserRegisterView 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-        initViews();
     }
 
-    private void initViews() {
+    @OnTextChanged(R.id.et_register_name)
+    void validateName(CharSequence text) {
+        if (!TextUtils.isEmpty(name_layout.getEditText().getText())
+                && !TextUtils.isEmpty(email_layout.getEditText().getText())
+                && !TextUtils.isEmpty(password_layout.getEditText().getText())
+                && !TextUtils.isEmpty(code_layout.getEditText().getText())) {
+            actionEnabled();
+            return;
+        }
+        actionDisabled();
+    }
 
+    @OnTextChanged(R.id.et_register_email)
+    void validateEmail(CharSequence text) {
+        if (!TextUtils.isEmpty(name_layout.getEditText().getText())
+                && !TextUtils.isEmpty(email_layout.getEditText().getText())
+                && !TextUtils.isEmpty(password_layout.getEditText().getText())
+                && !TextUtils.isEmpty(code_layout.getEditText().getText())) {
+            actionEnabled();
+            return;
+        }
+        actionDisabled();
+    }
+
+    @OnTextChanged(R.id.et_register_password)
+    void validatePassword(CharSequence text) {
+        if (!TextUtils.isEmpty(name_layout.getEditText().getText())
+                && !TextUtils.isEmpty(email_layout.getEditText().getText())
+                && !TextUtils.isEmpty(password_layout.getEditText().getText())
+                && !TextUtils.isEmpty(code_layout.getEditText().getText())) {
+            actionEnabled();
+            return;
+        }
+        actionDisabled();
+    }
+
+    @OnTextChanged(R.id.et_register_code)
+    void validateCode(CharSequence text) {
+        if (!TextUtils.isEmpty(name_layout.getEditText().getText())
+                && !TextUtils.isEmpty(email_layout.getEditText().getText())
+                && !TextUtils.isEmpty(password_layout.getEditText().getText())
+                && !TextUtils.isEmpty(code_layout.getEditText().getText())) {
+            actionEnabled();
+            return;
+        }
+        actionDisabled();
     }
 
     @Override
@@ -88,12 +135,12 @@ public class RegisterActivity extends BaseActivity implements IUserRegisterView 
 
     @OnClick(R.id.btn_register_create)
     void create() {
-
+        presenter.create();
     }
 
     @OnClick(R.id.btn_register_cancel)
     void cancel() {
-
+        finish();
     }
 
 
@@ -114,17 +161,27 @@ public class RegisterActivity extends BaseActivity implements IUserRegisterView 
 
     @Override
     public void getCodeEnabled() {
-
+        btn_code.setEnabled(true);
     }
 
     @Override
     public void getCodeDisabled() {
-
+        btn_code.setEnabled(false);
     }
 
     @Override
-    public void invalidateSecond(int second) {
+    public void invalidateSecond(long second) {
+        btn_code.setText(second + " second(s)");
+    }
 
+    @Override
+    public void resetCodeBtn() {
+        btn_code.setText(R.string.action_get_code);
+    }
+
+    @Override
+    public void showGetCodeError(String msg) {
+        showToast(msg);
     }
 
     @Override
@@ -139,12 +196,14 @@ public class RegisterActivity extends BaseActivity implements IUserRegisterView 
 
     @Override
     public void actionEnabled() {
-
+        btn_create.setEnabled(true);
+        btn_create.setAlpha(1.0f);
     }
 
     @Override
     public void actionDisabled() {
-
+        btn_create.setEnabled(false);
+        btn_create.setAlpha(0.5f);
     }
 
     @Override
@@ -158,8 +217,10 @@ public class RegisterActivity extends BaseActivity implements IUserRegisterView 
     }
 
     @Override
-    public void loginSuccess() {
-
+    public void loginSuccess(User user) {
+        setResult(RESULT_OK);
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 
     @OnClick(R.id.btn_get_code)
@@ -179,12 +240,14 @@ public class RegisterActivity extends BaseActivity implements IUserRegisterView 
 
     @Override
     public void hideLoading() {
-
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
     }
 
     @Override
-    public void showLoadingError() {
-
+    public void showLoadingError(CharSequence errMsg) {
+        showToast(errMsg);
     }
 
     @Override

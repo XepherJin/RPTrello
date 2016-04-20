@@ -38,6 +38,7 @@
     <string name="error_invalid_email">This email is invalid!</string>
     <string name="error_invalid_password">This password is too short!</string>
     <string name="error_incorrect_password">This password is incorrect!</string>
+    <string name="error_get_code_failed">Get code failed!</string>
     <string name="authenticating">Authenticating...</string>
     <string name="tips_forget_password">Forget your password?</string>
 

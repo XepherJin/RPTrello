@@ -1,5 +1,7 @@
 package com.retropoktan.rptrello.ui.view;
 
+import com.retropoktan.rptrello.model.entity.User;
+
 /**
  * Created by RetroPoktan on 12/25/15.
  */
@@ -16,5 +18,5 @@ public interface IUserLoginView extends IView {
 
     void passwordError();
 
-    void loginSuccess();
+    void loginSuccess(User user);
 }

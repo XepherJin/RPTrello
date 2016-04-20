@@ -39,8 +39,9 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    User provideUser() {
-        return new User();
+    User provideUser(DataManager dataManager) {
+        User user = dataManager.getDBHelper().get(User.TAG, User.class);
+        return user == null ? new User() : user;
     }
 
     @Provides

@@ -21,7 +21,7 @@ import retrofit.RxJavaCallAdapterFactory;
 public class ClientApiModule {
     private static final int API_VERSION = 1;
     private static final String API = "v" + API_VERSION;
-    private static final String BASE_URL = "http://203.88.161.15:9000/" + API + "/";
+    private static final String BASE_URL = "http://100.64.132.126:7000/" + API + "/";
 
     @Provides
     @PerDataManager
@@ -59,7 +59,7 @@ public class ClientApiModule {
     @PerDataManager
     HttpLoggingInterceptor provideHttpLog() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         return httpLoggingInterceptor;
     }
 }

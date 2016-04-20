@@ -6,5 +6,6 @@ package com.retropoktan.rptrello.ui.view;
 public interface IView {
     void showLoading();
     void hideLoading();
-    void showLoadingError();
+
+    void showLoadingError(CharSequence errMsg);
 }

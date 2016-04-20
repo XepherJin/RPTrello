@@ -472,4 +472,18 @@ public class PreferencesUtil {
         editor.clear();
         return editor.commit();
     }
+
+    public SharedPreferences getPreferences(Context context) {
+        if (context == null) {
+            return null;
+        }
+        SharedPreferences settings;
+        if (TextUtils.isEmpty(PREFERENCE_NAME)) {
+            settings = PreferenceManager.getDefaultSharedPreferences(context);
+        } else {
+            settings = context.getSharedPreferences(
+                    PREFERENCE_NAME, Context.MODE_PRIVATE);
+        }
+        return settings;
+    }
 }

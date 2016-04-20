@@ -6,12 +6,13 @@ package com.retropoktan.rptrello.ui.view;
 public interface IUserRegisterView extends IUserLoginView {
     String getUserName();
     void userNameError();
-
     String getCode();
-
     void getCodeEnabled();
-
     void getCodeDisabled();
 
-    void invalidateSecond(int second);
+    void invalidateSecond(long second);
+
+    void resetCodeBtn();
+
+    void showGetCodeError(String msg);
 }

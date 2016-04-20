@@ -1,7 +1,10 @@
 package com.retropoktan.rptrello.model;
 
 import com.retropoktan.rptrello.data.DataManager;
+import com.retropoktan.rptrello.model.entity.Msg;
 import com.retropoktan.rptrello.model.entity.User;
+import com.retropoktan.rptrello.model.req.UserCreateReq;
+import com.retropoktan.rptrello.model.req.UserLoginReq;
 
 import rx.Scheduler;
 import rx.Subscriber;
@@ -20,30 +23,34 @@ public class UserModel extends BaseModel {
         mUser = user;
     }
 
-    public Subscription execLogin(Subscriber subscriber) {
-        return subscriber;
-    }
-
-    public void getCode() {
-        mDataManager.getClientApi().getCode("575508330@qq.com")
+    public Subscription execLogin(UserLoginReq req, Subscriber subscriber) {
+        return mDataManager.getClientApi().login(req)
                 .subscribeOn(mIOScheduler)
                 .observeOn(mUIScheduler)
-                .subscribe(new Subscriber<String>() {
-                    @Override
-                    public void onCompleted() {
+                .subscribe(subscriber);
+    }
 
-                    }
+    public Subscription getCode(String email, Subscriber<Msg> subscriber) {
+        return mDataManager.getClientApi().getCode(email)
+                .subscribeOn(mIOScheduler)
+                .observeOn(mUIScheduler)
+                .subscribe(subscriber);
+    }
 
-                    @Override
-                    public void onError(Throwable e) {
+    public Subscription execCreate(UserCreateReq req, Subscriber<Msg<User>> subscriber) {
+        return mDataManager.getClientApi().createAccount(req)
+                .subscribeOn(mIOScheduler)
+                .observeOn(mUIScheduler)
+                .subscribe(subscriber);
+    }
 
-                    }
-
-                    @Override
-                    public void onNext(String s) {
-
-                    }
-                });
+    public void saveUser(User user) {
+        mUser.setEmail(user.getEmail());
+        mUser.setAvatar(user.getAvatar());
+        mUser.setId(user.getId());
+        mUser.setNick(user.getNick());
+        mUser.setToken(user.getToken());
+        mDataManager.getDBHelper().refresh(User.TAG, mUser);
     }
 
 }

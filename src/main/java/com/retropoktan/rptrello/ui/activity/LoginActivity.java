@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import com.retropoktan.rptrello.R;
 import com.retropoktan.rptrello.inject.module.ActivityModule;
+import com.retropoktan.rptrello.model.entity.User;
 import com.retropoktan.rptrello.ui.base.BaseActivity;
 import com.retropoktan.rptrello.ui.inject.component.DaggerUserComponent;
 import com.retropoktan.rptrello.ui.inject.module.UserModule;
@@ -22,6 +24,7 @@ import butterknife.Bind;
 import butterknife.BindString;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnTextChanged;
 
 /**
  * Created by RetroPoktan on 12/19/15.
@@ -57,7 +60,28 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         initViews();
-        actionEnabled();
+    }
+
+    @OnTextChanged(R.id.et_login_email)
+    void validateEmail(CharSequence text) {
+        if (TextUtils.isEmpty(text)) {
+            actionDisabled();
+            return;
+        }
+        if (!TextUtils.isEmpty(email_layout.getEditText().getText())) {
+            actionEnabled();
+        }
+    }
+
+    @OnTextChanged(R.id.et_login_password)
+    void validatePassword(CharSequence text) {
+        if (TextUtils.isEmpty(text)) {
+            actionDisabled();
+            return;
+        }
+        if (!TextUtils.isEmpty(password_layout.getEditText().getText())) {
+            actionEnabled();
+        }
     }
 
     private void initViews() {
@@ -127,7 +151,7 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     }
 
     @Override
-    public void loginSuccess() {
+    public void loginSuccess(User user) {
         setResult(RESULT_OK);
         startActivity(new Intent(this, MainActivity.class));
         finish();
@@ -151,7 +175,8 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     }
 
     @Override
-    public void showLoadingError() {
+    public void showLoadingError(CharSequence errMsg) {
+        showToast(errMsg);
     }
 
     @Override
