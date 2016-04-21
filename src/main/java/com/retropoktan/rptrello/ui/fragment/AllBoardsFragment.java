@@ -3,6 +3,7 @@ package com.retropoktan.rptrello.ui.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -41,6 +42,8 @@ public class AllBoardsFragment extends BaseFragment implements IAllBoardsView {
     AllBoardsPresenter presenter;
     @Inject
     BoardAdapter adapter;
+    @Bind(R.id.fab)
+    FloatingActionButton fab;
     private FragmentListener listener;
 
     public static AllBoardsFragment newInstance() {
@@ -102,7 +105,7 @@ public class AllBoardsFragment extends BaseFragment implements IAllBoardsView {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.layout_ptr_recycler;
+        return R.layout.layout_ptr_recycler_fab;
     }
 
     @Override

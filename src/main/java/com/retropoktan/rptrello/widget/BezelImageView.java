@@ -57,7 +57,7 @@ public class BezelImageView extends ImageView {
 
     private ColorMatrixColorFilter mDesaturateColorFilter;
     private boolean mDesaturateOnPress = false;
-
+    private boolean mSetOutline = false;
     private boolean mCacheValid = false;
     private Bitmap mCacheBitmap;
     private int mCachedWidth;
@@ -90,6 +90,8 @@ public class BezelImageView extends ImageView {
 
         mDesaturateOnPress = a.getBoolean(R.styleable.BezelImageView_desaturateOnPress,
                 mDesaturateOnPress);
+
+        mSetOutline = a.getBoolean(R.styleable.BezelImageView_setOutline, mSetOutline);
 
         a.recycle();
 
@@ -227,7 +229,7 @@ public class BezelImageView extends ImageView {
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && mSetOutline) {
             setOutlineProvider(new CircleOutLine(w, h));
         }
     }

@@ -57,4 +57,7 @@
     <!-- All Cards -->
     <string name="All_cards_title">All Cards</string>
 
+    <!-- About -->
+    <string name="About_tile">About</string>
+
 </resources>

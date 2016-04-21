@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.retropoktan.rptrello.R;
 import com.retropoktan.rptrello.model.entity.Team;
+import com.retropoktan.rptrello.widget.BezelImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,16 +40,19 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.item_board, parent, false);
+        View view = inflater.inflate(R.layout.item_team, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        Team Team = teams.get(position);
-        if (Team != null) {
-            holder.name.setText(Team.getName());
-            holder.desc.setText(Team.getDescription());
+        Team team = teams.get(position);
+        if (team != null) {
+            holder.name.setText(team.getName());
+            holder.desc.setText(team.getDescription());
+            holder.owner.setText("Owner：" + team.getOwner().getNick());
+            holder.manager.setText("Number of Managers：" + team.getManager().size());
+            holder.member.setText("Number of Members：" + team.getMember().size());
         }
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,12 +88,20 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.cv_board)
+        @Bind(R.id.cv_team)
         CardView cardView;
-        @Bind(R.id.cv_board_name)
+        @Bind(R.id.cv_team_pic)
+        BezelImageView teamPic;
+        @Bind(R.id.cv_team_name)
         TextView name;
-        @Bind(R.id.cv_board_description)
+        @Bind(R.id.cv_team_description)
         TextView desc;
+        @Bind(R.id.cv_team_owner)
+        TextView owner;
+        @Bind(R.id.cv_team_manager)
+        TextView manager;
+        @Bind(R.id.cv_team_worker)
+        TextView member;
 
         public ViewHolder(View itemView) {
             super(itemView);

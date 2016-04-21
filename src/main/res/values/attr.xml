@@ -6,6 +6,7 @@
         <attr name="maskDrawable" format="reference" />
         <attr name="borderDrawable" format="reference" />
         <attr name="desaturateOnPress" format="boolean" />
+        <attr name="setOutline" format="boolean" />
     </declare-styleable>
 
     <!-- CircleIndicator -->
