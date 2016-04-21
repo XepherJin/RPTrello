@@ -3,7 +3,9 @@ package com.retropoktan.rptrello.inject.module;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.retropoktan.rptrello.inject.scope.PerDataManager;
+import com.retropoktan.rptrello.model.entity.User;
 import com.retropoktan.rptrello.protocol.ClientApi;
+import com.retropoktan.rptrello.protocol.TokenInterceptor;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.logging.HttpLoggingInterceptor;
 
@@ -19,9 +21,10 @@ import retrofit.RxJavaCallAdapterFactory;
  */
 @Module
 public class ClientApiModule {
+
     private static final int API_VERSION = 1;
     private static final String API = "v" + API_VERSION;
-    private static final String BASE_URL = "http://100.64.132.126:7000/" + API + "/";
+    private static final String BASE_URL = "http://203.88.161.15:7000/" + API + "/";
 
     @Provides
     @PerDataManager
@@ -49,10 +52,18 @@ public class ClientApiModule {
 
     @Provides
     @PerDataManager
-    OkHttpClient provideClient(HttpLoggingInterceptor httpLoggingInterceptor) {
+    OkHttpClient provideClient(HttpLoggingInterceptor httpLoggingInterceptor, TokenInterceptor tokenInterceptor) {
         OkHttpClient client = new OkHttpClient();
         client.interceptors().add(httpLoggingInterceptor);
+        client.interceptors().add(tokenInterceptor);
         return client;
+    }
+
+    @Provides
+    @PerDataManager
+    TokenInterceptor provideTokenInterceptor(User user) {
+        String token = user.getToken();
+        return new TokenInterceptor(token);
     }
 
     @Provides

@@ -36,7 +36,7 @@ public class User extends Member implements Parcelable {
     }
 
     public boolean isAvailable() {
-        return !TextUtils.isEmpty(email);
+        return !TextUtils.isEmpty(token);
     }
 
     public String getToken() {

@@ -12,17 +12,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.retropoktan.rptrello.R;
+import com.retropoktan.rptrello.inject.component.ApplicationComponent;
 import com.retropoktan.rptrello.ui.base.BaseActivity;
 import com.retropoktan.rptrello.ui.fragment.AllBoardsFragment;
 import com.retropoktan.rptrello.ui.fragment.AllCardsFragment;
 import com.retropoktan.rptrello.ui.fragment.AllTeamsFragment;
+import com.retropoktan.rptrello.ui.listener.FragmentListener;
 import com.retropoktan.rptrello.ui.presenter.MainActivityPresenter;
 import com.retropoktan.rptrello.ui.view.IMainView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity implements IMainView {
+public class MainActivity extends BaseActivity implements IMainView, FragmentListener {
 
     private static final String FRAGMENT_INDEX = "FRAGMENT_INDEX";
 
@@ -206,4 +208,8 @@ public class MainActivity extends BaseActivity implements IMainView {
         return moveTaskToBack(true);
     }
 
+    @Override
+    public ApplicationComponent applicationComponent() {
+        return getApplicationComponent();
+    }
 }

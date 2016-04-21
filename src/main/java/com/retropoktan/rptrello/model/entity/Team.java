@@ -9,6 +9,8 @@ import java.util.List;
  */
 public class Team {
 
+    public static final String TAG = "team";
+
     private long id;
     private String description;
     private String name;
@@ -17,6 +19,7 @@ public class Team {
     private String createTime;
     private List<Member> manager;
     private Member owner;
+    private List<Member> member;
 
     public long getId() {
         return id;
@@ -72,5 +75,13 @@ public class Team {
 
     public void setOwner(Member owner) {
         this.owner = owner;
+    }
+
+    public List<Member> getMember() {
+        return member;
+    }
+
+    public void setMember(List<Member> member) {
+        this.member = member;
     }
 }

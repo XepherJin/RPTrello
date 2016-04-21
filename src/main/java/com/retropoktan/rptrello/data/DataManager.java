@@ -4,10 +4,14 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.retropoktan.rptrello.data.db.DBHelper;
+import com.retropoktan.rptrello.inject.component.DaggerClientApiComponent;
 import com.retropoktan.rptrello.inject.component.DaggerDataManagerComponent;
+import com.retropoktan.rptrello.inject.component.DataManagerComponent;
 import com.retropoktan.rptrello.inject.module.ClientApiModule;
 import com.retropoktan.rptrello.inject.module.DataManagerModule;
+import com.retropoktan.rptrello.model.entity.User;
 import com.retropoktan.rptrello.protocol.ClientApi;
+import com.retropoktan.rptrello.protocol.TokenInterceptor;
 
 import javax.inject.Inject;
 
@@ -21,15 +25,22 @@ public class DataManager {
     @Inject
     ClientApi mClientApi;
     @Inject
+    TokenInterceptor mInterceptor;
+    @Inject
     Gson mGson;
+    @Inject
+    User mUser;
 
     public DataManager(Context context) {
         initInjection(context);
     }
 
     private void initInjection(Context context) {
-        DaggerDataManagerComponent.builder()
+        DataManagerComponent dataManagerComponent = DaggerDataManagerComponent.builder()
                 .dataManagerModule(new DataManagerModule(context))
+                .build();
+        DaggerClientApiComponent.builder()
+                .dataManagerComponent(dataManagerComponent)
                 .clientApiModule(new ClientApiModule())
                 .build()
                 .inject(this);
@@ -43,8 +54,16 @@ public class DataManager {
         return mClientApi;
     }
 
+    public void setToken(String token) {
+        mInterceptor.setToken(token);
+    }
+
     public Gson getGson() {
         return mGson;
+    }
+
+    public User getUser() {
+        return mUser;
     }
 
 }

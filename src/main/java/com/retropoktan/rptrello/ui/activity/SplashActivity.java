@@ -73,6 +73,6 @@ public class SplashActivity extends BaseActivity {
     }
 
     private boolean isUserExist() {
-        return getApplicationComponent().getUser().isAvailable();
+        return getApplicationComponent().getDataManager().getUser().isAvailable();
     }
 }

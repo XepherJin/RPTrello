@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.retropoktan.rptrello.R;
-import com.retropoktan.rptrello.model.entity.Board;
+import com.retropoktan.rptrello.model.entity.Team;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,16 +20,16 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * Created by RetroPoktan on 4/4/16.
+ * Created by RetroPoktan on 4/21/16.
  */
-public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> {
+public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
 
     private final LayoutInflater inflater;
     private OnItemClickListener onItemClickListener;
-    private List<Board> boards = new ArrayList<>();
+    private List<Team> teams = new ArrayList<>();
 
     @Inject
-    public BoardAdapter(Context context) {
+    public TeamAdapter(Context context) {
         inflater = LayoutInflater.from(context);
     }
 
@@ -45,41 +45,41 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        Board board = boards.get(position);
-        if (board != null) {
-            holder.name.setText(board.getName());
-            holder.desc.setText(board.getDescription());
+        Team Team = teams.get(position);
+        if (Team != null) {
+            holder.name.setText(Team.getName());
+            holder.desc.setText(Team.getDescription());
         }
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onItemClickListener != null) {
-                    Board board = boards.get(holder.getLayoutPosition());
-                    if (board != null) {
-                        onItemClickListener.onItemClick(board, holder.getLayoutPosition());
+                    Team team = teams.get(holder.getLayoutPosition());
+                    if (team != null) {
+                        onItemClickListener.onItemClick(team, holder.getLayoutPosition());
                     }
                 }
             }
         });
     }
 
-    public void addAll(List<Board> list) {
-        boards.clear();
-        boards.addAll(list);
+    public void addAll(List<Team> list) {
+        teams.clear();
+        teams.addAll(list);
         notifyDataSetChanged();
     }
 
     public void clearAll() {
-        boards.clear();
+        teams.clear();
     }
 
     @Override
     public int getItemCount() {
-        return boards.size();
+        return teams.size();
     }
 
     public interface OnItemClickListener {
-        void onItemClick(Board board, int i);
+        void onItemClick(Team team, int i);
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

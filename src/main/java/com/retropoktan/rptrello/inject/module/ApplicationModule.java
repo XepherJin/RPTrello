@@ -2,7 +2,6 @@ package com.retropoktan.rptrello.inject.module;
 
 import com.retropoktan.rptrello.TrelloApplication;
 import com.retropoktan.rptrello.data.DataManager;
-import com.retropoktan.rptrello.model.entity.User;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -35,13 +34,6 @@ public class ApplicationModule {
     @Singleton
     DataManager provideDataManager() {
         return new DataManager(mApplication);
-    }
-
-    @Provides
-    @Singleton
-    User provideUser(DataManager dataManager) {
-        User user = dataManager.getDBHelper().get(User.TAG, User.class);
-        return user == null ? new User() : user;
     }
 
     @Provides

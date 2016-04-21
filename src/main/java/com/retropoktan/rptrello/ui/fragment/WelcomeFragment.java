@@ -3,6 +3,7 @@ package com.retropoktan.rptrello.ui.fragment;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,7 +42,7 @@ public class WelcomeFragment extends BaseFragment {
     }
 
     @Override
-    protected void initViews() {
+    protected void initViews(View view) {
         if (mDrawable == null) {
             mDrawable = ContextCompat.getDrawable(getActivity(), imageResId);
         }

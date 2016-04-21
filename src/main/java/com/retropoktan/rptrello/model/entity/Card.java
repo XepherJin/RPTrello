@@ -10,7 +10,7 @@ public class Card {
     private long id;
     private String name;
     @SerializedName("belong_project")
-    private String boardName;
+    private long boardId;
 
     public long getId() {
         return id;
@@ -28,11 +28,11 @@ public class Card {
         this.name = name;
     }
 
-    public String getBoardName() {
-        return boardName;
+    public long getBoardId() {
+        return boardId;
     }
 
-    public void setBoardName(String boardName) {
-        this.boardName = boardName;
+    public void setBoardId(long boardId) {
+        this.boardId = boardId;
     }
 }

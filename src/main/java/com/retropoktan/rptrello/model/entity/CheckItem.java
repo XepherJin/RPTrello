@@ -9,7 +9,7 @@ public class CheckItem {
 
     private String name;
     @SerializedName("belong_mission")
-    private String taskName;
+    private long taskId;
     @SerializedName("created_date")
     private String createTime;
     private int status = -1;
@@ -22,12 +22,12 @@ public class CheckItem {
         this.name = name;
     }
 
-    public String getTaskName() {
-        return taskName;
+    public long getTaskId() {
+        return taskId;
     }
 
-    public void setTaskName(String taskName) {
-        this.taskName = taskName;
+    public void setTaskId(long taskId) {
+        this.taskId = taskId;
     }
 
     public String getCreateTime() {

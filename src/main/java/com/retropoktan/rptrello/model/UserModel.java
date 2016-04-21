@@ -17,10 +17,10 @@ public class UserModel extends BaseModel {
 
     private User mUser;
 
-    public UserModel(User user, DataManager dataManager,
+    public UserModel(DataManager dataManager,
                        Scheduler uiScheduler, Scheduler ioScheduler) {
         super(dataManager, uiScheduler, ioScheduler);
-        mUser = user;
+        mUser = mDataManager.getUser();
     }
 
     public Subscription execLogin(UserLoginReq req, Subscriber subscriber) {
@@ -50,6 +50,7 @@ public class UserModel extends BaseModel {
         mUser.setId(user.getId());
         mUser.setNick(user.getNick());
         mUser.setToken(user.getToken());
+        mDataManager.setToken(user.getToken());
         mDataManager.getDBHelper().refresh(User.TAG, mUser);
     }
 

@@ -1,6 +1,7 @@
 package com.retropoktan.rptrello.ui.fragment;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.retropoktan.rptrello.R;
 import com.retropoktan.rptrello.ui.base.BaseFragment;
@@ -20,7 +21,7 @@ public class AllCardsFragment extends BaseFragment {
     }
 
     @Override
-    protected void initViews() {
+    protected void initViews(View view) {
 
     }
 

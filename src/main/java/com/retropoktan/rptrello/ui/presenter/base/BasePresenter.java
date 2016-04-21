@@ -66,6 +66,11 @@ public abstract class BasePresenter<T extends IView> implements IPresenter<T> {
             removeSubscription(this);
             mView.hideLoading();
             parseError(e);
+            readCache();
+        }
+
+        protected void readCache() {
+
         }
 
         protected void parseError(Throwable e) {

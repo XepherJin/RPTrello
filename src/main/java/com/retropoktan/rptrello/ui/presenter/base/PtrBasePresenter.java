@@ -35,5 +35,5 @@ public abstract class PtrBasePresenter<T extends IAdapterView> extends BasePrese
 
     protected abstract void loadMore();
 
-    protected abstract void refresh(boolean isNew);
+    public abstract void refresh(boolean isNew);
 }

@@ -7,11 +7,13 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Board {
 
+    public static final String TAG = "board";
+
     private long id;
     private String name;
     private String description;
     @SerializedName("belong_team")
-    private String teamName;
+    private long teamId;
 
     public String getDescription() {
         return description;
@@ -25,16 +27,12 @@ public class Board {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public long getTeamId() {
+        return teamId;
     }
 
-    public String getTeamName() {
-        return teamName;
-    }
-
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
+    public void setTeamId(long teamId) {
+        this.teamId = teamId;
     }
 
     public long getId() {

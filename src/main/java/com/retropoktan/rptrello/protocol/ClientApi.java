@@ -1,9 +1,13 @@
 package com.retropoktan.rptrello.protocol;
 
+import com.retropoktan.rptrello.model.entity.Board;
 import com.retropoktan.rptrello.model.entity.Msg;
+import com.retropoktan.rptrello.model.entity.Team;
 import com.retropoktan.rptrello.model.entity.User;
 import com.retropoktan.rptrello.model.req.UserCreateReq;
 import com.retropoktan.rptrello.model.req.UserLoginReq;
+
+import java.util.List;
 
 import retrofit.http.Body;
 import retrofit.http.GET;
@@ -27,4 +31,10 @@ public interface ClientApi {
     Observable<Msg<User>> login(@Body UserLoginReq req);
 
     //////////////// board //////////////
+    @GET("project")
+    Observable<Msg<List<Board>>> getBoards();
+
+    ////////////// team //////////////
+    @GET("team")
+    Observable<Msg<List<Team>>> getTeams();
 }

@@ -34,23 +34,43 @@ public abstract class BaseFragment extends Fragment {
             parent.removeView(root);
         }
         ButterKnife.bind(this, root);
-        initViews();
+        return root;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         if (getContext() != null) {
             setupComponent();
         }
-        return root;
+        initViews(view);
+        addListeners();
+        super.onViewCreated(view, savedInstanceState);
     }
+
+    protected void addListeners() {
+
+    }
+
+    protected abstract void initViews(View view);
 
     protected void setupComponent() {
 
     }
 
-    protected abstract void initViews();
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        destroyPresenter();
+    }
+
+    protected void destroyPresenter() {
+
     }
 
     protected abstract int getLayoutId();
