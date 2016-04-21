@@ -50,17 +50,17 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
 //            holder.name.setText(board.getName());
 //            holder.desc.setText(board.getDescription());
 //        }
-//        holder.cardView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (onItemClickListener != null) {
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onItemClickListener != null) {
 //                    Board board = boards.get(holder.getLayoutPosition());
 //                    if (board != null) {
 //                        onItemClickListener.onItemClick(board, holder.getLayoutPosition());
 //                    }
-//                }
-//            }
-//        });
+                }
+            }
+        });
     }
 
     public void addAll(List<Board> list) {
