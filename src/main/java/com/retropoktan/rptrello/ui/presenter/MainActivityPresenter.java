@@ -5,7 +5,7 @@ import android.view.MenuItem;
 
 import com.retropoktan.rptrello.R;
 import com.retropoktan.rptrello.ui.fragment.AllBoardsFragment;
-import com.retropoktan.rptrello.ui.fragment.AllCardsFragment;
+import com.retropoktan.rptrello.ui.fragment.AllTasksFragment;
 import com.retropoktan.rptrello.ui.fragment.AllTeamsFragment;
 import com.retropoktan.rptrello.ui.presenter.base.BasePresenter;
 import com.retropoktan.rptrello.ui.view.IMainView;
@@ -37,9 +37,9 @@ public class MainActivityPresenter extends BasePresenter<IMainView> {
                 ft.replace(R.id.content_main, mView.teamsFragment());
                 mView.setToolbarTitle(R.string.Teams_title);
                 break;
-            case AllCardsFragment.TYPE:
+            case AllTasksFragment.TYPE:
                 ft.replace(R.id.content_main, mView.cardsFragment());
-                mView.setToolbarTitle(R.string.All_cards_title);
+                mView.setToolbarTitle(R.string.All_tasks_title);
             default:
                 break;
         }
@@ -54,7 +54,7 @@ public class MainActivityPresenter extends BasePresenter<IMainView> {
             case R.id.nav_teams:
                 return AllTeamsFragment.TYPE;
             case R.id.nav_cards:
-                return AllCardsFragment.TYPE;
+                return AllTasksFragment.TYPE;
             default:
                 return -1;
         }

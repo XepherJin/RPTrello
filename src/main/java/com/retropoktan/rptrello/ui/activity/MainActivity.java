@@ -15,7 +15,7 @@ import com.retropoktan.rptrello.R;
 import com.retropoktan.rptrello.inject.component.ApplicationComponent;
 import com.retropoktan.rptrello.ui.base.BaseActivity;
 import com.retropoktan.rptrello.ui.fragment.AllBoardsFragment;
-import com.retropoktan.rptrello.ui.fragment.AllCardsFragment;
+import com.retropoktan.rptrello.ui.fragment.AllTasksFragment;
 import com.retropoktan.rptrello.ui.fragment.AllTeamsFragment;
 import com.retropoktan.rptrello.ui.listener.FragmentListener;
 import com.retropoktan.rptrello.ui.presenter.MainActivityPresenter;
@@ -40,7 +40,7 @@ public class MainActivity extends BaseActivity implements IMainView, FragmentLis
     private int currentItem = -1;
     private AllBoardsFragment boardsFragment;
     private AllTeamsFragment teamsFragment;
-    private AllCardsFragment cardsFragment;
+    private AllTasksFragment cardsFragment;
 
     private MainActivityPresenter presenter;
 
@@ -188,7 +188,7 @@ public class MainActivity extends BaseActivity implements IMainView, FragmentLis
     @Override
     public Fragment cardsFragment() {
         if (cardsFragment == null) {
-            cardsFragment = AllCardsFragment.newInstance();
+            cardsFragment = AllTasksFragment.newInstance();
         }
         return cardsFragment;
     }

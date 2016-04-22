@@ -9,6 +9,8 @@ import java.util.List;
  */
 public class Task {
 
+    public static final String TAG = "task";
+
     private long id;
     private String name;
     @SerializedName("belong_list")

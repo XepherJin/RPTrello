@@ -2,6 +2,7 @@ package com.retropoktan.rptrello.protocol;
 
 import com.retropoktan.rptrello.model.entity.Board;
 import com.retropoktan.rptrello.model.entity.Msg;
+import com.retropoktan.rptrello.model.entity.Task;
 import com.retropoktan.rptrello.model.entity.Team;
 import com.retropoktan.rptrello.model.entity.User;
 import com.retropoktan.rptrello.model.req.UserCreateReq;
@@ -37,4 +38,8 @@ public interface ClientApi {
     ////////////// team //////////////
     @GET("team")
     Observable<Msg<List<Team>>> getTeams();
+
+    //////////////// task ///////////////////
+    @GET("mission")
+    Observable<Msg<List<Task>>> getTasks();
 }
