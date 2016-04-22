@@ -71,6 +71,12 @@ public class AllBoardsFragment extends BaseFragment implements IAllBoardsView {
 
     @Override
     protected void addListeners() {
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showToast("add boards！ 功能待添加");
+            }
+        });
         adapter.setOnItemClickListener(new BoardAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Board board, int i) {
