@@ -128,7 +128,9 @@ public class AllTasksFragment extends BaseFragment implements IAllTasksView {
 
     @Override
     public void hideLoading() {
-        swipeRefreshLayout.setRefreshing(false);
+        if (swipeRefreshLayout != null) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     @Override

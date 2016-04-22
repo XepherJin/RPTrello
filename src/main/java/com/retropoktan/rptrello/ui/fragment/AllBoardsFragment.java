@@ -135,7 +135,9 @@ public class AllBoardsFragment extends BaseFragment implements IAllBoardsView {
 
     @Override
     public void hideLoading() {
-        swipeRefreshLayout.setRefreshing(false);
+        if (swipeRefreshLayout != null) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     @Override

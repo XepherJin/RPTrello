@@ -128,7 +128,9 @@ public class AllTeamsFragment extends BaseFragment implements IAllTeamsView {
 
     @Override
     public void hideLoading() {
-        swipeRefreshLayout.setRefreshing(false);
+        if (swipeRefreshLayout != null) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     @Override
