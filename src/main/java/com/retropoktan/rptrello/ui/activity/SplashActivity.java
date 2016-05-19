@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import com.retropoktan.rptrello.R;
 import com.retropoktan.rptrello.ui.base.BaseActivity;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -24,7 +24,7 @@ public class SplashActivity extends BaseActivity {
     private static final int DELAY_TIME = 2000;
     private static final int HIDDEN_TIME = 2000;
 
-    @Bind(R.id.iv_logo_big)
+    @BindView(R.id.iv_logo_big)
     ImageView logo;
 
     private Handler mHandler = new Handler() {

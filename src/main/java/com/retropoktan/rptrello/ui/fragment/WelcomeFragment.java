@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.retropoktan.rptrello.R;
 import com.retropoktan.rptrello.ui.base.BaseFragment;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * Created by RetroPoktan on 1/2/16.
@@ -21,11 +21,11 @@ public class WelcomeFragment extends BaseFragment {
     private static final String ARG_TITLE = "title";
     private static final String ARG_IMAGE = "image";
     private static final String ARG_COTENT = "content";
-    @Bind(R.id.iv_fragment_welcome)
+    @BindView(R.id.iv_fragment_welcome)
     ImageView iv;
-    @Bind(R.id.tv_fragment_welcome_title)
+    @BindView(R.id.tv_fragment_welcome_title)
     TextView tv_title;
-    @Bind(R.id.tv_fragment_welcome_content)
+    @BindView(R.id.tv_fragment_welcome_content)
     TextView tv_content;
     private int imageResId, titleResId, contentResId;
     private Drawable mDrawable;

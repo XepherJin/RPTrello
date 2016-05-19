@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.retropoktan.rptrello.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
  */
 public abstract class ToolbarBaseActivity extends BaseActivity {
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     protected Toolbar toolbar;
 
     protected CoordinatorLayout main;

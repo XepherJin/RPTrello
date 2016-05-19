@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.retropoktan.rptrello.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * Created by RetroPoktan on 4/4/16.
@@ -14,9 +14,9 @@ import butterknife.Bind;
 public abstract class SwipeRefreshBaseActivity extends ToolbarBaseActivity {
 
     protected boolean isRefreshing;
-    @Bind(R.id.swipe_refresh_layout)
+    @BindView(R.id.swipe_refresh_layout)
     protected SwipeRefreshLayout swipeRefreshLayout;
-    @Bind(R.id.recycler_view)
+    @BindView(R.id.recycler_view)
     protected RecyclerView recyclerView;
 
     public boolean isRefreshing() {

@@ -18,7 +18,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -103,15 +103,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.cv_task)
+        @BindView(R.id.cv_task)
         CardView cardView;
-        @Bind(R.id.cv_task_name)
+        @BindView(R.id.cv_task_name)
         TextView name;
-        @Bind(R.id.cv_task_description)
+        @BindView(R.id.cv_task_description)
         TextView desc;
-        @Bind(R.id.cv_task_deadline)
+        @BindView(R.id.cv_task_deadline)
         TextView deadline;
-        @Bind(R.id.cv_task_check_items)
+        @BindView(R.id.cv_task_check_items)
         TextView checkItems;
 
         public ViewHolder(View itemView) {

@@ -20,8 +20,8 @@ import com.retropoktan.rptrello.ui.view.IUserLoginView;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
 import butterknife.BindString;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
@@ -33,15 +33,15 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
 
     @Inject
     UserLoginPresenter presenter;
-    @Bind(R.id.et_login_email_layout)
+    @BindView(R.id.et_login_email_layout)
     TextInputLayout email_layout;
-    @Bind(R.id.et_login_password_layout)
+    @BindView(R.id.et_login_password_layout)
     TextInputLayout password_layout;
-    @Bind(R.id.btn_login_cancel)
+    @BindView(R.id.btn_login_cancel)
     Button btn_cancel;
-    @Bind(R.id.btn_login)
+    @BindView(R.id.btn_login)
     Button btn_login;
-    @Bind(R.id.iv_forget_password)
+    @BindView(R.id.iv_forget_password)
     ImageView iv_forget_password;
 
     @BindString(R.string.error_invalid_email)

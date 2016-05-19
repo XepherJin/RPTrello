@@ -21,18 +21,18 @@ import com.retropoktan.rptrello.ui.listener.FragmentListener;
 import com.retropoktan.rptrello.ui.presenter.MainActivityPresenter;
 import com.retropoktan.rptrello.ui.view.IMainView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements IMainView, FragmentListener {
 
     private static final String FRAGMENT_INDEX = "FRAGMENT_INDEX";
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.drawerlayout_main)
+    @BindView(R.id.drawerlayout_main)
     DrawerLayout mDrawer;
-    @Bind(R.id.nav_view_main)
+    @BindView(R.id.nav_view_main)
     NavigationView mNavigationView;
 
     private ActionBarDrawerToggle toggle;

@@ -26,7 +26,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * Created by RetroPoktan on 4/19/16.
@@ -34,15 +34,15 @@ import butterknife.Bind;
 public class AllBoardsFragment extends BaseFragment implements IAllBoardsView {
 
     public static final int TYPE = 0;
-    @Bind(R.id.swipe_refresh_layout)
+    @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipeRefreshLayout;
-    @Bind(R.id.recycler_view)
+    @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
     @Inject
     AllBoardsPresenter presenter;
     @Inject
     BoardAdapter adapter;
-    @Bind(R.id.fab)
+    @BindView(R.id.fab)
     FloatingActionButton fab;
     private FragmentListener listener;
 

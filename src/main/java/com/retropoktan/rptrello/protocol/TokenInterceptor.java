@@ -2,11 +2,11 @@ package com.retropoktan.rptrello.protocol;
 
 import android.text.TextUtils;
 
-import com.squareup.okhttp.Interceptor;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
-
 import java.io.IOException;
+
+import okhttp3.Interceptor;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by RetroPoktan on 4/21/16.
@@ -14,10 +14,6 @@ import java.io.IOException;
 public class TokenInterceptor implements Interceptor {
 
     private String mToken;
-
-    public TokenInterceptor() {
-
-    }
 
     public TokenInterceptor(String token) {
         mToken = token;

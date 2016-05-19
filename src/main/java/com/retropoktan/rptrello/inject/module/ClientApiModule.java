@@ -6,15 +6,15 @@ import com.retropoktan.rptrello.inject.scope.PerDataManager;
 import com.retropoktan.rptrello.model.entity.User;
 import com.retropoktan.rptrello.protocol.ClientApi;
 import com.retropoktan.rptrello.protocol.TokenInterceptor;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.logging.HttpLoggingInterceptor;
 
 import dagger.Module;
 import dagger.Provides;
-import retrofit.Converter;
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
-import retrofit.RxJavaCallAdapterFactory;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Converter;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by RetroPoktan on 12/12/15.
@@ -53,10 +53,10 @@ public class ClientApiModule {
     @Provides
     @PerDataManager
     OkHttpClient provideClient(HttpLoggingInterceptor httpLoggingInterceptor, TokenInterceptor tokenInterceptor) {
-        OkHttpClient client = new OkHttpClient();
-        client.interceptors().add(httpLoggingInterceptor);
-        client.interceptors().add(tokenInterceptor);
-        return client;
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.interceptors().add(httpLoggingInterceptor);
+        builder.interceptors().add(tokenInterceptor);
+        return builder.build();
     }
 
     @Provides

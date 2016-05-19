@@ -11,7 +11,7 @@ import com.retropoktan.rptrello.R;
 import com.retropoktan.rptrello.ui.adapter.WelcomePagerAdapter;
 import com.retropoktan.rptrello.widget.CircleIndicator;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -22,13 +22,13 @@ public class WelcomeActivity extends AppCompatActivity {
 
     public static final int REQUEST_CODE = 0x01;
 
-    @Bind(R.id.btn_welcome_login)
+    @BindView(R.id.btn_welcome_login)
     Button btn_login;
-    @Bind(R.id.btn_welcome_signup)
+    @BindView(R.id.btn_welcome_signup)
     Button btn_signup;
-    @Bind(R.id.vp_welcome)
+    @BindView(R.id.vp_welcome)
     ViewPager mViewPager;
-    @Bind(R.id.vp_indicator_welcome)
+    @BindView(R.id.vp_indicator_welcome)
     CircleIndicator mIndicator;
 
     private WelcomePagerAdapter mPagerAdapter;

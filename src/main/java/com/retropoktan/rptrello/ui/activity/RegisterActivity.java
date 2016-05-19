@@ -18,8 +18,8 @@ import com.retropoktan.rptrello.ui.view.IUserRegisterView;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
 import butterknife.BindString;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
@@ -31,19 +31,19 @@ public class RegisterActivity extends BaseActivity implements IUserRegisterView 
 
     @Inject
     UserRegisterPresenter presenter;
-    @Bind(R.id.et_register_name_layout)
+    @BindView(R.id.et_register_name_layout)
     TextInputLayout name_layout;
-    @Bind(R.id.et_register_email_layout)
+    @BindView(R.id.et_register_email_layout)
     TextInputLayout email_layout;
-    @Bind(R.id.et_register_password_layout)
+    @BindView(R.id.et_register_password_layout)
     TextInputLayout password_layout;
-    @Bind(R.id.et_register_code_layout)
+    @BindView(R.id.et_register_code_layout)
     TextInputLayout code_layout;
-    @Bind(R.id.btn_register_cancel)
+    @BindView(R.id.btn_register_cancel)
     Button btn_cancel;
-    @Bind(R.id.btn_register_create)
+    @BindView(R.id.btn_register_create)
     Button btn_create;
-    @Bind(R.id.btn_get_code)
+    @BindView(R.id.btn_get_code)
     Button btn_code;
 
     @BindString(R.string.error_invalid_name)

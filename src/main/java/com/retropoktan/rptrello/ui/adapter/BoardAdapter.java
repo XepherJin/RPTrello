@@ -16,7 +16,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -84,11 +84,11 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.cv_board)
+        @BindView(R.id.cv_board)
         CardView cardView;
-        @Bind(R.id.cv_board_name)
+        @BindView(R.id.cv_board_name)
         TextView name;
-        @Bind(R.id.cv_board_description)
+        @BindView(R.id.cv_board_description)
         TextView desc;
 
         public ViewHolder(View itemView) {

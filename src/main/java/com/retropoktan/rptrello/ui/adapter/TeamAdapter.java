@@ -17,7 +17,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -88,19 +88,19 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.cv_team)
+        @BindView(R.id.cv_team)
         CardView cardView;
-        @Bind(R.id.cv_team_pic)
+        @BindView(R.id.cv_team_pic)
         BezelImageView teamPic;
-        @Bind(R.id.cv_team_name)
+        @BindView(R.id.cv_team_name)
         TextView name;
-        @Bind(R.id.cv_team_description)
+        @BindView(R.id.cv_team_description)
         TextView desc;
-        @Bind(R.id.cv_team_owner)
+        @BindView(R.id.cv_team_owner)
         TextView owner;
-        @Bind(R.id.cv_team_manager)
+        @BindView(R.id.cv_team_manager)
         TextView manager;
-        @Bind(R.id.cv_team_worker)
+        @BindView(R.id.cv_team_worker)
         TextView member;
 
         public ViewHolder(View itemView) {

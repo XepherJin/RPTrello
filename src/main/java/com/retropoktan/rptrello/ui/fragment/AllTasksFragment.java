@@ -22,7 +22,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * Created by RetroPoktan on 4/20/16.
@@ -30,9 +30,9 @@ import butterknife.Bind;
 public class AllTasksFragment extends BaseFragment implements IAllTasksView {
 
     public static final int TYPE = 2;
-    @Bind(R.id.swipe_refresh_layout)
+    @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipeRefreshLayout;
-    @Bind(R.id.recycler_view)
+    @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
     @Inject
     AllTasksPresenter presenter;

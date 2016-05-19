@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by RetroPoktan on 12/13/15.
@@ -16,6 +17,7 @@ import butterknife.ButterKnife;
 public abstract class BaseFragment extends Fragment {
 
     protected View root;
+    private Unbinder mUnbinder;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,7 @@ public abstract class BaseFragment extends Fragment {
             ViewGroup parent = (ViewGroup) root.getParent();
             parent.removeView(root);
         }
-        ButterKnife.bind(this, root);
+        mUnbinder = ButterKnife.bind(this, root);
         return root;
     }
 
@@ -60,7 +62,9 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+        if (mUnbinder != null) {
+            mUnbinder.unbind();
+        }
     }
 
     @Override
