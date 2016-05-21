@@ -13,6 +13,7 @@ import java.util.List;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -34,6 +35,9 @@ public interface ClientApi {
     //////////////// board //////////////
     @GET("project")
     Observable<Msg<List<Board>>> getBoards();
+
+    @GET("project/{id}")
+    Observable<Msg<Board>> getBoardDetail(@Path("id") int projectId);
 
     ////////////// team //////////////
     @GET("team")

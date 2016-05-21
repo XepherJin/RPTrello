@@ -68,6 +68,9 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
     }
 
     public void addAll(List<Team> list) {
+        if (list == null) {
+            return;
+        }
         teams.clear();
         teams.addAll(list);
         notifyDataSetChanged();

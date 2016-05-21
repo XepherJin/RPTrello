@@ -83,6 +83,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     }
 
     public void addAll(List<Task> list) {
+        if (list == null) {
+            return;
+        }
         tasks.clear();
         tasks.addAll(list);
         notifyDataSetChanged();

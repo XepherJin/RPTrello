@@ -25,7 +25,13 @@ public interface IMainView extends IView {
 
     void closeDrawer();
 
+    void closeDrawerDelayed(long delayMillis);
+
     boolean isDrawerOpen();
 
     boolean moveTaskToBack();
+
+    void goSettings();
+
+    void goAbout();
 }

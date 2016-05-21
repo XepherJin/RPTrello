@@ -17,7 +17,25 @@ public class MainActivityPresenter extends BasePresenter<IMainView> {
 
     public void switchFragment(MenuItem menuItem) {
         int itemId = parseItemId(menuItem.getItemId());
+        if (itemId == -1) {
+            switchActivity(menuItem.getItemId());
+            return;
+        }
         switchFragment(itemId);
+    }
+
+    private void switchActivity(int itemId) {
+        switch (itemId) {
+            case R.id.nav_settings:
+                mView.goSettings();
+                break;
+            case R.id.nav_about:
+                mView.goAbout();
+                break;
+            default:
+                break;
+        }
+        mView.closeDrawerDelayed(500); //delay 500ms
     }
 
     public void switchFragment(int itemId) {

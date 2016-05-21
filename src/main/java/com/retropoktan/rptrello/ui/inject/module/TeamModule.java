@@ -2,7 +2,7 @@ package com.retropoktan.rptrello.ui.inject.module;
 
 import com.retropoktan.rptrello.data.DataManager;
 import com.retropoktan.rptrello.inject.scope.PerActivity;
-import com.retropoktan.rptrello.model.req.TeamModel;
+import com.retropoktan.rptrello.model.TeamModel;
 
 import javax.inject.Named;
 

@@ -54,8 +54,8 @@ public class ClientApiModule {
     @PerDataManager
     OkHttpClient provideClient(HttpLoggingInterceptor httpLoggingInterceptor, TokenInterceptor tokenInterceptor) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.interceptors().add(httpLoggingInterceptor);
-        builder.interceptors().add(tokenInterceptor);
+        builder.addInterceptor(httpLoggingInterceptor);
+        builder.addNetworkInterceptor(tokenInterceptor);
         return builder.build();
     }
 

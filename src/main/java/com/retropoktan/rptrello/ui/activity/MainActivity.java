@@ -1,5 +1,6 @@
 package com.retropoktan.rptrello.ui.activity;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -199,6 +200,16 @@ public class MainActivity extends BaseActivity implements IMainView, FragmentLis
     }
 
     @Override
+    public void closeDrawerDelayed(long delayMillis) {
+        mDrawer.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mDrawer.closeDrawer(GravityCompat.START);
+            }
+        }, delayMillis);
+    }
+
+    @Override
     public boolean isDrawerOpen() {
         return mDrawer.isDrawerOpen(GravityCompat.START);
     }
@@ -206,6 +217,16 @@ public class MainActivity extends BaseActivity implements IMainView, FragmentLis
     @Override
     public boolean moveTaskToBack() {
         return moveTaskToBack(true);
+    }
+
+    @Override
+    public void goSettings() {
+        startActivity(new Intent(this, SettingsActivity.class));
+    }
+
+    @Override
+    public void goAbout() {
+
     }
 
     @Override

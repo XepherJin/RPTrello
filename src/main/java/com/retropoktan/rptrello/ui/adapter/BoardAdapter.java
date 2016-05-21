@@ -64,6 +64,9 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
     }
 
     public void addAll(List<Board> list) {
+        if (list == null) {
+            return;
+        }
         boards.clear();
         boards.addAll(list);
         notifyDataSetChanged();

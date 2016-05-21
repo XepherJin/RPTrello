@@ -1,7 +1,6 @@
-package com.retropoktan.rptrello.model.req;
+package com.retropoktan.rptrello.model;
 
 import com.retropoktan.rptrello.data.DataManager;
-import com.retropoktan.rptrello.model.BaseModel;
 import com.retropoktan.rptrello.model.entity.Msg;
 import com.retropoktan.rptrello.model.entity.Team;
 

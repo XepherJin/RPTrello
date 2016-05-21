@@ -1,8 +1,8 @@
 package com.retropoktan.rptrello.ui.presenter;
 
+import com.retropoktan.rptrello.model.TeamModel;
 import com.retropoktan.rptrello.model.entity.Msg;
 import com.retropoktan.rptrello.model.entity.Team;
-import com.retropoktan.rptrello.model.req.TeamModel;
 import com.retropoktan.rptrello.ui.presenter.base.PtrBasePresenter;
 import com.retropoktan.rptrello.ui.view.IAllTeamsView;
 
