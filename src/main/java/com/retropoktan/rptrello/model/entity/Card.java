@@ -7,6 +7,8 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Card {
 
+    public static final String TAG = "card";
+
     private long id;
     private String name;
     @SerializedName("belong_project")

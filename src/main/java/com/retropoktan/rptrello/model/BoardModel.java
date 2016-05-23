@@ -1,5 +1,6 @@
 package com.retropoktan.rptrello.model;
 
+import com.google.gson.reflect.TypeToken;
 import com.retropoktan.rptrello.data.DataManager;
 import com.retropoktan.rptrello.model.entity.Board;
 import com.retropoktan.rptrello.model.entity.Msg;
@@ -26,11 +27,19 @@ public class BoardModel extends BaseModel {
                 .subscribe(subscriber);
     }
 
+    public Subscription getBoardDetail(long id, Subscriber<Msg<Board>> subscriber) {
+        return mDataManager.getClientApi().getBoardDetail(id)
+                .subscribeOn(mIOScheduler)
+                .observeOn(mUIScheduler)
+                .subscribe(subscriber);
+    }
+
     public void saveAllBoards(List<Board> list) {
         mDataManager.getDBHelper().refresh(Board.TAG, list);
     }
 
     public List<Board> getCachedBoards() {
-        return null;
+        return mDataManager.getDBHelper().get(Board.TAG, new TypeToken<List<Board>>() {
+        }.getType());
     }
 }

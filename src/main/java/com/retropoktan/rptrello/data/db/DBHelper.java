@@ -78,6 +78,15 @@ public class DBHelper {
         }
     }
 
+    public <T> T get(String key, Type typeOfT) {
+        try {
+            return Reservoir.get(key, typeOfT);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public <T> Observable<T> get(Class<T> clazz) {
         String key = clazz.getSimpleName();
         return getAsync(key, clazz);

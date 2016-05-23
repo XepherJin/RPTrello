@@ -57,7 +57,7 @@ public class AllBoardsPresenter extends PtrBasePresenter<IAllBoardsView> {
     }
 
     public void onBoardClick(Board board, int i) {
-
+        mView.seeBoardDetail(board);
     }
 
 }

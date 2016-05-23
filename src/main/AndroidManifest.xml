@@ -41,6 +41,8 @@
             android:name=".ui.activity.ForgetPasswordActivity"
             android:theme="@style/AppTheme.Launcher" />
         <activity android:name=".ui.activity.SettingsActivity"></activity>
+        <activity android:name=".ui.activity.BoardDetailActivity"></activity>
+        <activity android:name=".ui.activity.TaskDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -20,4 +20,12 @@ public abstract class BaseModel {
         mUIScheduler = uiScheduler;
     }
 
+    public Scheduler getIOScheduler() {
+        return mIOScheduler;
+    }
+
+    public Scheduler getUIScheduler() {
+        return mUIScheduler;
+    }
+
 }

@@ -3,7 +3,6 @@ package com.retropoktan.rptrello.ui.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,15 +11,15 @@ import android.view.View;
 
 import com.retropoktan.rptrello.R;
 import com.retropoktan.rptrello.inject.module.ActivityModule;
-import com.retropoktan.rptrello.model.entity.Board;
-import com.retropoktan.rptrello.ui.activity.BoardDetailActivity;
-import com.retropoktan.rptrello.ui.adapter.BoardAdapter;
+import com.retropoktan.rptrello.model.entity.Task;
+import com.retropoktan.rptrello.ui.activity.TaskDetailActivity;
+import com.retropoktan.rptrello.ui.adapter.TaskAdapter;
 import com.retropoktan.rptrello.ui.base.BaseFragment;
-import com.retropoktan.rptrello.ui.inject.component.DaggerBoardComponent;
-import com.retropoktan.rptrello.ui.inject.module.BoardModule;
+import com.retropoktan.rptrello.ui.inject.component.DaggerTaskComponent;
+import com.retropoktan.rptrello.ui.inject.module.TaskModule;
 import com.retropoktan.rptrello.ui.listener.FragmentListener;
-import com.retropoktan.rptrello.ui.presenter.AllBoardsPresenter;
-import com.retropoktan.rptrello.ui.view.IAllBoardsView;
+import com.retropoktan.rptrello.ui.presenter.CardPresenter;
+import com.retropoktan.rptrello.ui.view.ICardView;
 
 import java.util.List;
 
@@ -29,28 +28,40 @@ import javax.inject.Inject;
 import butterknife.BindView;
 
 /**
- * Created by RetroPoktan on 4/19/16.
+ * Created by RetroPoktan on 5/22/16.
  */
-public class AllBoardsFragment extends BaseFragment implements IAllBoardsView {
+public class CardFragment extends BaseFragment implements ICardView {
 
-    public static final int TYPE = 0;
+    public static final String TAG = CardFragment.class.getSimpleName();
+    private static final String ARG_TITLE = "title";
+
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
     @Inject
-    AllBoardsPresenter presenter;
+    CardPresenter presenter;
     @Inject
-    BoardAdapter adapter;
-    @BindView(R.id.fab)
-    FloatingActionButton fab;
+    TaskAdapter adapter;
+    private CharSequence title;
     private FragmentListener listener;
 
-    public static AllBoardsFragment newInstance() {
+    public static CardFragment newInstance(CharSequence title) {
         Bundle args = new Bundle();
-        AllBoardsFragment fragment = new AllBoardsFragment();
+        CardFragment fragment = new CardFragment();
+        args.putCharSequence(ARG_TITLE, title);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    protected void parseArguments() {
+        Bundle bundle = getArguments();
+        title = bundle.getCharSequence(ARG_TITLE);
+    }
+
+    public CharSequence getTitle() {
+        return title;
     }
 
     @Override
@@ -71,16 +82,10 @@ public class AllBoardsFragment extends BaseFragment implements IAllBoardsView {
 
     @Override
     protected void addListeners() {
-        fab.setOnClickListener(new View.OnClickListener() {
+        adapter.setOnItemClickListener(new TaskAdapter.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                showToast("add boards！ 功能待添加");
-            }
-        });
-        adapter.setOnItemClickListener(new BoardAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(Board board, int i) {
-                presenter.onBoardClick(board, i);
+            public void onItemClick(Task task, int i) {
+                presenter.onTaskClick(task, i);
             }
         });
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -93,10 +98,10 @@ public class AllBoardsFragment extends BaseFragment implements IAllBoardsView {
 
     @Override
     protected void setupComponent() {
-        DaggerBoardComponent.builder()
+        DaggerTaskComponent.builder()
                 .activityModule(new ActivityModule(getContext()))
                 .applicationComponent(listener.applicationComponent())
-                .boardModule(new BoardModule())
+                .taskModule(new TaskModule())
                 .build()
                 .inject(this);
     }
@@ -111,7 +116,7 @@ public class AllBoardsFragment extends BaseFragment implements IAllBoardsView {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.layout_ptr_recycler_fab;
+        return R.layout.layout_ptr_recycler;
     }
 
     @Override
@@ -137,6 +142,7 @@ public class AllBoardsFragment extends BaseFragment implements IAllBoardsView {
     @Override
     public void showLoading() {
 
+
     }
 
     @Override
@@ -152,15 +158,14 @@ public class AllBoardsFragment extends BaseFragment implements IAllBoardsView {
     }
 
     @Override
-    public void showContent(List<Board> list) {
+    public void showContent(List<Task> list) {
         adapter.addAll(list);
     }
 
     @Override
-    public void seeBoardDetail(Board board) {
-        Intent intent = new Intent(getActivity(), BoardDetailActivity.class);
-        intent.putExtra(Board.TAG, board);
+    public void seeTaskDetail(Task task) {
+        Intent intent = new Intent(getActivity(), TaskDetailActivity.class);
+        intent.putExtra(Task.TAG, task.getId());
         startActivity(intent);
     }
-
 }

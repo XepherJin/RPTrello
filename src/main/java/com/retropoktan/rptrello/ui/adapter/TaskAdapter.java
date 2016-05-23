@@ -101,7 +101,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     }
 
     public interface OnItemClickListener {
-        void onItemClick(Task Task, int i);
+        void onItemClick(Task task, int i);
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

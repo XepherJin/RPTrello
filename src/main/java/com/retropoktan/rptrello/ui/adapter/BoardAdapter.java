@@ -45,19 +45,19 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-//        Board board = boards.get(position);
-//        if (board != null) {
-//            holder.name.setText(board.getName());
-//            holder.desc.setText(board.getDescription());
-//        }
+        Board board = boards.get(position);
+        if (board != null) {
+            holder.name.setText(board.getName());
+            holder.desc.setText(board.getDescription());
+        }
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onItemClickListener != null) {
-//                    Board board = boards.get(holder.getLayoutPosition());
-//                    if (board != null) {
-//                        onItemClickListener.onItemClick(board, holder.getLayoutPosition());
-//                    }
+                    Board board = boards.get(holder.getLayoutPosition());
+                    if (board != null) {
+                        onItemClickListener.onItemClick(board, holder.getLayoutPosition());
+                    }
                 }
             }
         });
@@ -78,7 +78,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return 20;
+        return boards.size();
     }
 
     public interface OnItemClickListener {

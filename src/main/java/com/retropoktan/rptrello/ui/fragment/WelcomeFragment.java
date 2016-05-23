@@ -63,4 +63,6 @@ public class WelcomeFragment extends BaseFragment {
         titleResId = bundle.getInt(ARG_TITLE);
         contentResId = bundle.getInt(ARG_COTENT);
     }
+
+
 }
