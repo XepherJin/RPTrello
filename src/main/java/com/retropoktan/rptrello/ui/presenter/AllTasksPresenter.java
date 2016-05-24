@@ -56,8 +56,8 @@ public class AllTasksPresenter extends PtrBasePresenter<IAllTasksView> {
         addSubscription(subscription);
     }
 
-    public void onTaskClick(Task Task, int i) {
-
+    public void onTaskClick(Task task, int i) {
+        mView.seeTaskDetail(task, i);
     }
 
 }

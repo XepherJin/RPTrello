@@ -28,10 +28,7 @@ public class User extends Member implements Parcelable {
     }
 
     private User(Parcel in) {
-        id = in.readLong();
-        nick = in.readString();
-        email = in.readString();
-        avatar = in.readString();
+        super(in);
         token = in.readString();
     }
 
@@ -54,10 +51,7 @@ public class User extends Member implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeLong(id);
-        dest.writeString(nick);
-        dest.writeString(email);
-        dest.writeString(avatar);
+        super.writeToParcel(dest, flags);
         dest.writeString(token);
     }
 }

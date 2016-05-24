@@ -27,6 +27,10 @@
     <dimen name="activity_login_horizontal_margin">24dp</dimen>
     <dimen name="activity_login_vertical_spacing">24dp</dimen>
 
+    <dimen name="activity_task_detail_appbar_height">256dp</dimen>
+    <dimen name="activity_task_detail_comment_avatar">37dp</dimen>
+    <dimen name="activity_task_detail_comment_left_padding">45dp</dimen>
+
     <!-- StatusBar's height -->
     <dimen name="status_bar_height">25dp</dimen>
 

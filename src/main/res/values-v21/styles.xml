@@ -15,6 +15,8 @@
         <item name="android:windowEnterTransition">@transition/explode</item>
         <item name="android:windowExitTransition">@transition/explode</item>
 
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+
     </style>
 
     <style name="Button.Common.Green">
@@ -22,8 +24,8 @@
         <item name="android:textColor">?attr/colorAccent</item>
     </style>
 
-    <!-- Theme for MainActivity -->
-    <style name="AppTheme.DrawerLayoutTheme">
+    <!-- Theme for TransparentStatusBar -->
+    <style name="AppTheme.TransparentStatusBarTheme">
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
