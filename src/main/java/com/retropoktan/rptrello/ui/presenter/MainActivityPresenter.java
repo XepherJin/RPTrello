@@ -57,7 +57,7 @@ public class MainActivityPresenter extends BasePresenter<IMainView> {
                 break;
             case AllTasksFragment.TYPE:
                 ft.replace(R.id.content_main, mView.cardsFragment());
-                mView.setToolbarTitle(R.string.All_tasks_title);
+                mView.setToolbarTitle(R.string.Tasks_title);
             default:
                 break;
         }

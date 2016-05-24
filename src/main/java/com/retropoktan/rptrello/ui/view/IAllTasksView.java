@@ -10,5 +10,5 @@ import java.util.List;
 public interface IAllTasksView extends IAdapterView {
     void showContent(List<Task> list);
 
-    void seeTaskDetail(Task task);
+    void seeTaskDetail(Task task, int position);
 }

@@ -15,7 +15,7 @@
         <activity
             android:name=".ui.activity.MainActivity"
             android:launchMode="singleTop"
-            android:theme="@style/AppTheme.DrawerLayoutTheme"></activity>
+            android:theme="@style/AppTheme.TransparentStatusBarTheme"></activity>
         <activity
             android:name=".ui.activity.SplashActivity"
             android:theme="@style/AppTheme.Launcher">
@@ -42,7 +42,9 @@
             android:theme="@style/AppTheme.Launcher" />
         <activity android:name=".ui.activity.SettingsActivity"></activity>
         <activity android:name=".ui.activity.BoardDetailActivity"></activity>
-        <activity android:name=".ui.activity.TaskDetailActivity"></activity>
+        <activity
+            android:name=".ui.activity.TaskDetailActivity"
+            android:theme="@style/AppTheme.TransparentStatusBarTheme" />
     </application>
 
 </manifest>
