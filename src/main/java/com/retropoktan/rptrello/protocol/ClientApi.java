@@ -69,6 +69,9 @@ public interface ClientApi {
     @GET("mission/{id}")
     Observable<Msg<Task>> getTaskDetail(@Path("id") long taskId);
 
+    @GET("mission_list/{id}/missions")
+    Observable<Msg<List<Task>>> getCardTasks(@Path("id") long cardId);
+
     @DELETE("mission/{id}")
     Observable<Msg> deleteTask(@Path("id") long taskId);
 

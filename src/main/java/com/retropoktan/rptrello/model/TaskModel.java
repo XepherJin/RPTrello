@@ -26,6 +26,13 @@ public class TaskModel extends BaseModel {
                 .subscribe(subscriber);
     }
 
+    public Subscription getCardTasks(long cardId, Subscriber<Msg<List<Task>>> subscriber) {
+        return mDataManager.getClientApi().getCardTasks(cardId)
+                .subscribeOn(mIOScheduler)
+                .observeOn(mUIScheduler)
+                .subscribe(subscriber);
+    }
+
     public void saveAllTasks(List<Task> list) {
         mDataManager.getDBHelper().refresh(Task.TAG, list);
     }

@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.retropoktan.rptrello.R;
 import com.retropoktan.rptrello.inject.module.ActivityModule;
+import com.retropoktan.rptrello.model.entity.Card;
 import com.retropoktan.rptrello.model.entity.Task;
 import com.retropoktan.rptrello.ui.activity.TaskDetailActivity;
 import com.retropoktan.rptrello.ui.adapter.TaskAdapter;
@@ -33,7 +34,7 @@ import butterknife.BindView;
 public class CardFragment extends BaseFragment implements ICardView {
 
     public static final String TAG = CardFragment.class.getSimpleName();
-    private static final String ARG_TITLE = "title";
+    private static final String ARG_CARD = "card";
 
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipeRefreshLayout;
@@ -43,25 +44,25 @@ public class CardFragment extends BaseFragment implements ICardView {
     CardPresenter presenter;
     @Inject
     TaskAdapter adapter;
-    private CharSequence title;
+    private Card mCard;
     private FragmentListener listener;
 
-    public static CardFragment newInstance(CharSequence title) {
+    public static CardFragment newInstance(Card card) {
         Bundle args = new Bundle();
         CardFragment fragment = new CardFragment();
-        args.putCharSequence(ARG_TITLE, title);
+        args.putParcelable(ARG_CARD, card);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public CharSequence getTitle() {
+        return mCard == null ? null : mCard.getName();
     }
 
     @Override
     protected void parseArguments() {
         Bundle bundle = getArguments();
-        title = bundle.getCharSequence(ARG_TITLE);
-    }
-
-    public CharSequence getTitle() {
-        return title;
+        mCard = bundle.getParcelable(ARG_CARD);
     }
 
     @Override
@@ -165,7 +166,12 @@ public class CardFragment extends BaseFragment implements ICardView {
     @Override
     public void seeTaskDetail(Task task) {
         Intent intent = new Intent(getActivity(), TaskDetailActivity.class);
-        intent.putExtra(Task.TAG, task.getId());
+        intent.putExtra(Task.TAG, task);
         startActivity(intent);
+    }
+
+    @Override
+    public long getCardId() {
+        return mCard == null ? -1L : mCard.getId();
     }
 }

@@ -13,4 +13,6 @@ public interface ICardView extends IAdapterView {
 
     void seeTaskDetail(Task task);
 
+    long getCardId();
+
 }

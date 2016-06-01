@@ -143,7 +143,7 @@ public class BoardDetailActivity extends BaseActivity implements IBoardDetailVie
     public void setTabs(List<Card> list) {
         List<CardFragment> fragments = new ArrayList<>();
         for (Card c : list) {
-            fragments.add(CardFragment.newInstance(c.getName()));
+            fragments.add(CardFragment.newInstance(c));
         }
         viewPager.setAdapter(new CardPagerAdapter(getSupportFragmentManager(), fragments));
         tabLayout.setupWithViewPager(viewPager);
