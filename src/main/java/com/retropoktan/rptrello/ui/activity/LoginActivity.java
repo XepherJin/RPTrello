@@ -153,7 +153,9 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     @Override
     public void loginSuccess(User user) {
         setResult(RESULT_OK);
-        startActivity(new Intent(this, MainActivity.class));
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra(User.TAG, user);
+        startActivity(intent);
         finish();
     }
 

@@ -4,6 +4,7 @@ import com.google.gson.reflect.TypeToken;
 import com.retropoktan.rptrello.data.DataManager;
 import com.retropoktan.rptrello.model.entity.Board;
 import com.retropoktan.rptrello.model.entity.Msg;
+import com.retropoktan.rptrello.model.req.BoardCreateReq;
 
 import java.util.List;
 
@@ -29,6 +30,13 @@ public class BoardModel extends BaseModel {
 
     public Subscription getBoardDetail(long id, Subscriber<Msg<Board>> subscriber) {
         return mDataManager.getClientApi().getBoardDetail(id)
+                .subscribeOn(mIOScheduler)
+                .observeOn(mUIScheduler)
+                .subscribe(subscriber);
+    }
+
+    public Subscription createBoard(BoardCreateReq req, Subscriber<Msg<Board>> subscriber) {
+        return mDataManager.getClientApi().createBoard(req)
                 .subscribeOn(mIOScheduler)
                 .observeOn(mUIScheduler)
                 .subscribe(subscriber);

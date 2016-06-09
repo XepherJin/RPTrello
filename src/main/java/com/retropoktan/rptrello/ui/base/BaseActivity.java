@@ -2,6 +2,7 @@ package com.retropoktan.rptrello.ui.base;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
@@ -32,6 +33,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void setupComponent() {
 
+    }
+
+    protected Bundle getActivityTransitionAnimBundle() {
+        return ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle();
     }
 
     protected void attachViewForPresenter() {

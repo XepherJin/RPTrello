@@ -1,10 +1,10 @@
 package com.retropoktan.rptrello.ui.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +14,7 @@ import android.view.View;
 import com.retropoktan.rptrello.R;
 import com.retropoktan.rptrello.inject.module.ActivityModule;
 import com.retropoktan.rptrello.model.entity.Board;
+import com.retropoktan.rptrello.ui.activity.BoardCreateActivity;
 import com.retropoktan.rptrello.ui.activity.BoardDetailActivity;
 import com.retropoktan.rptrello.ui.adapter.BoardAdapter;
 import com.retropoktan.rptrello.ui.base.BaseFragment;
@@ -35,6 +36,9 @@ import butterknife.BindView;
 public class AllBoardsFragment extends BaseFragment implements IAllBoardsView {
 
     public static final int TYPE = 0;
+
+    public static final int REQUEST_CODE_CREATE_BOARD = 0x01;
+
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.recycler_view)
@@ -75,7 +79,7 @@ public class AllBoardsFragment extends BaseFragment implements IAllBoardsView {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showToast("add boards！ 功能待添加");
+                presenter.showCreateBoard();
             }
         });
         adapter.setOnItemClickListener(new BoardAdapter.OnItemClickListener() {
@@ -161,7 +165,26 @@ public class AllBoardsFragment extends BaseFragment implements IAllBoardsView {
     public void seeBoardDetail(Board board) {
         Intent intent = new Intent(getActivity(), BoardDetailActivity.class);
         intent.putExtra(Board.TAG, board);
-        startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity()).toBundle());
+        startActivity(intent, getActivityTransitionAnimBundle());
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == Activity.RESULT_CANCELED) {
+            return;
+        }
+        switch (requestCode) {
+            case REQUEST_CODE_CREATE_BOARD:
+                presenter.refresh(true);
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void showCreateBoard() {
+        startActivityForResult(new Intent(getContext(), BoardCreateActivity.class), REQUEST_CODE_CREATE_BOARD);
     }
 
 }

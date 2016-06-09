@@ -12,4 +12,6 @@ public interface IAllBoardsView extends IAdapterView {
     void showContent(List<Board> list);
     void seeBoardDetail(Board board);
 
+    void showCreateBoard();
+
 }
