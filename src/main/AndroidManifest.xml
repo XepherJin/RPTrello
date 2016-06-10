@@ -44,7 +44,7 @@
         <activity android:name=".ui.activity.BoardDetailActivity"></activity>
         <activity
             android:name=".ui.activity.BoardCreateActivity"
-            android:windowSoftInputMode="stateAlwaysVisible"></activity>
+            android:windowSoftInputMode="stateAlwaysVisible|adjustResize"></activity>
         <activity
             android:name=".ui.activity.TaskDetailActivity"
             android:theme="@style/AppTheme.TransparentStatusBarTheme" />

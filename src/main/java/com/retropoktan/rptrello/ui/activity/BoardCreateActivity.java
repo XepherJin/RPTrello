@@ -2,25 +2,34 @@ package com.retropoktan.rptrello.ui.activity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Spinner;
 
 import com.retropoktan.rptrello.R;
 import com.retropoktan.rptrello.inject.module.ActivityModule;
 import com.retropoktan.rptrello.model.entity.Board;
+import com.retropoktan.rptrello.model.entity.Team;
+import com.retropoktan.rptrello.ui.adapter.SpinnerChooseAdapter;
 import com.retropoktan.rptrello.ui.base.ToolbarBaseActivity;
-import com.retropoktan.rptrello.ui.inject.component.DaggerBoardComponent;
+import com.retropoktan.rptrello.ui.inject.component.DaggerBoardCreateComponent;
 import com.retropoktan.rptrello.ui.inject.module.BoardModule;
+import com.retropoktan.rptrello.ui.inject.module.TeamModule;
 import com.retropoktan.rptrello.ui.presenter.BoardCreatePresenter;
 import com.retropoktan.rptrello.ui.view.IBoardCreateView;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.BindString;
 import butterknife.BindView;
+import butterknife.OnItemSelected;
 import butterknife.OnTextChanged;
 
 /**
@@ -41,10 +50,35 @@ public class BoardCreateActivity extends ToolbarBaseActivity implements IBoardCr
     ProgressDialog mProgressDialog;
     @Inject
     BoardCreatePresenter presenter;
+    @Inject
+    SpinnerChooseAdapter adapter;
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
+
+    private long teamId = -1L;
+
+    @Override
+    protected boolean withFAB() {
+        return true;
+    }
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
+        fab.setImageResource(R.drawable.ic_done_white_24dp);
+        fab.setEnabled(false);
+        spinner.setAdapter(adapter);
+        presenter.getAllTeams();
+    }
 
+    @Override
+    protected void addListeners() {
+        super.addListeners();
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.createBoard();
+            }
+        });
     }
 
     @Override
@@ -78,13 +112,15 @@ public class BoardCreateActivity extends ToolbarBaseActivity implements IBoardCr
 
     @Override
     protected void setupComponent() {
-        DaggerBoardComponent.builder()
+        DaggerBoardCreateComponent.builder()
                 .activityModule(new ActivityModule(this))
                 .applicationComponent(getApplicationComponent())
                 .boardModule(new BoardModule())
+                .teamModule(new TeamModule())
                 .build()
                 .inject(this);
     }
+
 
     @Override
     protected void attachViewForPresenter() {
@@ -121,17 +157,27 @@ public class BoardCreateActivity extends ToolbarBaseActivity implements IBoardCr
 
     @Override
     public void actionEnabled() {
+        fab.setEnabled(true);
+    }
 
+    @OnItemSelected(R.id.spinner_board_create)
+    void onTeamClick(AdapterView<?> parent, View view, int position, long id) {
+        teamId = adapter.getItem(position).getId();
+    }
+
+    @OnItemSelected(value = R.id.spinner_board_create, callback = OnItemSelected.Callback.NOTHING_SELECTED)
+    void onNothingSelected(AdapterView<?> parent) {
+        showToast("No team selected!");
     }
 
     @Override
     public void actionDisabled() {
-
+        fab.setEnabled(false);
     }
 
     @Override
     public String getBoardName() {
-        return name_layout.getEditText().toString();
+        return name_layout.getEditText().getText().toString();
     }
 
     @Override
@@ -141,11 +187,21 @@ public class BoardCreateActivity extends ToolbarBaseActivity implements IBoardCr
 
     @Override
     public long getTeamId() {
-        return 0;
+        return teamId;
     }
 
     @Override
     public void createSuccess(Board board) {
         showToast("Create Success!");
+    }
+
+    @Override
+    public void showTeams(List<Team> list) {
+        adapter.addAll(list);
+    }
+
+    @Override
+    public void showEmpty() {
+        showToast("You are not in any teams!");
     }
 }

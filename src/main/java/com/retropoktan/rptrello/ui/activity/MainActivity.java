@@ -53,17 +53,17 @@ public class MainActivity extends BaseActivity implements IMainView, FragmentLis
     }
 
     private void initViews(Bundle savedInstanceState) {
+        if (savedInstanceState != null && savedInstanceState.containsKey(FRAGMENT_INDEX)) {
+            presenter.switchFragment(savedInstanceState.getInt(FRAGMENT_INDEX, AllBoardsFragment.TYPE));
+            return;
+        }
+        presenter.switchFragment(AllBoardsFragment.TYPE);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toggle = new ActionBarDrawerToggle(
                 this, mDrawer,
                 R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close);
-        if (savedInstanceState != null && savedInstanceState.containsKey(FRAGMENT_INDEX)) {
-            presenter.switchFragment(savedInstanceState.getInt(FRAGMENT_INDEX, AllBoardsFragment.TYPE));
-            return;
-        }
-        presenter.switchFragment(AllBoardsFragment.TYPE);
     }
 
     @Override

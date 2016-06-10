@@ -1,7 +1,5 @@
 package com.retropoktan.rptrello.ui.presenter;
 
-import android.util.Log;
-
 import com.retropoktan.rptrello.model.BoardModel;
 import com.retropoktan.rptrello.model.entity.Board;
 import com.retropoktan.rptrello.model.entity.Msg;
@@ -24,7 +22,6 @@ public class AllBoardsPresenter extends PtrBasePresenter<IAllBoardsView> {
     @Inject
     public AllBoardsPresenter(BoardModel boardModel) {
         mBoardModel = boardModel;
-        Log.e("test", mBoardModel.toString());
     }
 
     @Override

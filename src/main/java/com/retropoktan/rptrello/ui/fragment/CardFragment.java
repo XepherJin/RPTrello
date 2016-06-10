@@ -167,7 +167,7 @@ public class CardFragment extends BaseFragment implements ICardView {
     public void seeTaskDetail(Task task) {
         Intent intent = new Intent(getActivity(), TaskDetailActivity.class);
         intent.putExtra(Task.TAG, task);
-        startActivity(intent);
+        startActivity(intent, getActivityTransitionAnimBundle());
     }
 
     @Override
