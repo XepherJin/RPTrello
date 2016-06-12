@@ -12,6 +12,7 @@ import com.retropoktan.rptrello.inject.module.DataManagerModule;
 import com.retropoktan.rptrello.model.entity.User;
 import com.retropoktan.rptrello.protocol.ClientApi;
 import com.retropoktan.rptrello.protocol.TokenInterceptor;
+import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
@@ -30,6 +31,8 @@ public class DataManager {
     Gson mGson;
     @Inject
     User mUser;
+    @Inject
+    Picasso mPicasso;
 
     public DataManager(Context context) {
         initInjection(context);
@@ -64,6 +67,10 @@ public class DataManager {
 
     public User getUser() {
         return mUser;
+    }
+
+    public Picasso getPicasso() {
+        return mPicasso;
     }
 
 }

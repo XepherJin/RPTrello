@@ -1,5 +1,6 @@
 package com.retropoktan.rptrello.ui.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -11,12 +12,15 @@ import android.widget.ImageView;
 
 import com.retropoktan.rptrello.R;
 import com.retropoktan.rptrello.inject.module.ActivityModule;
+import com.retropoktan.rptrello.model.entity.Comment;
 import com.retropoktan.rptrello.model.entity.Task;
 import com.retropoktan.rptrello.ui.adapter.CommentAdapter;
 import com.retropoktan.rptrello.ui.base.BaseActivity;
 import com.retropoktan.rptrello.ui.inject.component.DaggerTaskComponent;
 import com.retropoktan.rptrello.ui.presenter.TaskDetailPresenter;
 import com.retropoktan.rptrello.ui.view.ITaskDetailView;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -60,12 +64,16 @@ public class TaskDetailActivity extends BaseActivity implements ITaskDetailView 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
+        if (mTask != null) {
+            presenter.getTaskComments(mTask.getId());
+        }
     }
 
     private void initViews() {
         setToolbar(toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        loadTaskDetail();
     }
 
     private void setToolbar(Toolbar toolbar) {
@@ -153,4 +161,22 @@ public class TaskDetailActivity extends BaseActivity implements ITaskDetailView 
     }
 
 
+    @Override
+    public void loadTaskDetail() {
+        if (mTask == null) {
+            return;
+        }
+        adapter.addTaskDetailHeader(mTask);
+        presenter.loadTaskPicUrl("http://img4q.duitang.com/uploads/item/201307/14/20130714224054_ExYvR.jpeg", taskIv);
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
+    }
+
+    @Override
+    public void showContent(List<Comment> list) {
+        adapter.addAllComments(list);
+    }
 }

@@ -2,6 +2,7 @@ package com.retropoktan.rptrello.protocol;
 
 import com.retropoktan.rptrello.model.entity.Board;
 import com.retropoktan.rptrello.model.entity.Card;
+import com.retropoktan.rptrello.model.entity.Comment;
 import com.retropoktan.rptrello.model.entity.Member;
 import com.retropoktan.rptrello.model.entity.Msg;
 import com.retropoktan.rptrello.model.entity.Task;
@@ -81,4 +82,8 @@ public interface ClientApi {
 
     @DELETE("mission_list/{id}")
     Observable<Msg> deleteCard(@Path("id") long cardId);
+
+    //////////////// comment /////////////////
+    @GET("mission/{id}/comments")
+    Observable<Msg<List<Comment>>> getTaskComments(@Path("id") long taskId);
 }

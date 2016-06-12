@@ -7,6 +7,8 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Comment {
 
+    public static final String TAG = "Comment";
+
     private long id;
     private String comment;
     @SerializedName("created_date")

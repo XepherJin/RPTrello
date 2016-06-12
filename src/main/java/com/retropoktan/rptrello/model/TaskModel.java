@@ -1,6 +1,8 @@
 package com.retropoktan.rptrello.model;
 
+import com.google.gson.reflect.TypeToken;
 import com.retropoktan.rptrello.data.DataManager;
+import com.retropoktan.rptrello.model.entity.Comment;
 import com.retropoktan.rptrello.model.entity.Msg;
 import com.retropoktan.rptrello.model.entity.Task;
 
@@ -33,11 +35,28 @@ public class TaskModel extends BaseModel {
                 .subscribe(subscriber);
     }
 
+    public Subscription getTaskComments(long taskId, Subscriber<Msg<List<Comment>>> subscriber) {
+        return mDataManager.getClientApi().getTaskComments(taskId)
+                .subscribeOn(mIOScheduler)
+                .observeOn(mUIScheduler)
+                .subscribe(subscriber);
+    }
+
     public void saveAllTasks(List<Task> list) {
         mDataManager.getDBHelper().refresh(Task.TAG, list);
     }
 
+    public void saveAllComments(List<Comment> list) {
+        mDataManager.getDBHelper().refresh(Comment.TAG, list);
+    }
+
     public List<Task> getCachedTasks() {
-        return null;
+        return mDataManager.getDBHelper().get(Task.TAG, new TypeToken<List<Task>>() {
+        }.getType());
+    }
+
+    public List<Comment> getCachedComments() {
+        return mDataManager.getDBHelper().get(Comment.TAG, new TypeToken<List<Comment>>() {
+        }.getType());
     }
 }

@@ -95,7 +95,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
 
     @Override
     public void getItemOffsets(Rect outRect, int itemPosition, RecyclerView parent) {
-        if (itemPosition != parent.getAdapter().getItemCount() - 1) {
+        if (itemPosition == parent.getAdapter().getItemCount() - 1) {
             outRect.set(0, 0, 0, 0);
             return;
         }

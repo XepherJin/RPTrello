@@ -1,6 +1,7 @@
 package com.retropoktan.rptrello.model;
 
 import com.retropoktan.rptrello.data.DataManager;
+import com.squareup.picasso.Picasso;
 
 import rx.Scheduler;
 
@@ -26,6 +27,10 @@ public abstract class BaseModel {
 
     public Scheduler getUIScheduler() {
         return mUIScheduler;
+    }
+
+    public Picasso getPicasso() {
+        return mDataManager.getPicasso();
     }
 
 }

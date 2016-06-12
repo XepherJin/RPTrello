@@ -3,6 +3,7 @@ package com.retropoktan.rptrello.inject.component;
 import com.retropoktan.rptrello.data.db.DBHelper;
 import com.retropoktan.rptrello.inject.module.DataManagerModule;
 import com.retropoktan.rptrello.model.entity.User;
+import com.squareup.picasso.Picasso;
 
 import dagger.Component;
 
@@ -13,5 +14,6 @@ import dagger.Component;
 public interface DataManagerComponent {
     User user();
 
+    Picasso picasso();
     DBHelper dbHelper();
 }

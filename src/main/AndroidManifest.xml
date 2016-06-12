@@ -47,7 +47,8 @@
             android:windowSoftInputMode="stateAlwaysVisible|adjustResize"></activity>
         <activity
             android:name=".ui.activity.TaskDetailActivity"
-            android:theme="@style/AppTheme.TransparentStatusBarTheme" />
+            android:theme="@style/AppTheme.TransparentStatusBarTheme"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

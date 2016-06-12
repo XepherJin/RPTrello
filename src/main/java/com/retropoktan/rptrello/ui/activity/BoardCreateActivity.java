@@ -193,6 +193,8 @@ public class BoardCreateActivity extends ToolbarBaseActivity implements IBoardCr
     @Override
     public void createSuccess(Board board) {
         showToast("Create Success!");
+        setResult(RESULT_OK);
+        finish();
     }
 
     @Override
