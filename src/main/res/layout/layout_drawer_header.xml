@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/drawer_avatar_iv"
         android:paddingTop="@dimen/activity_vertical_margin"
-        android:text="丿Ace灬Seong"
+        android:text="用户名"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
@@ -35,6 +35,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/drawer_user_name_tv"
-        android:text="575508330@qq.com" />
+        android:text="邮箱" />
+
+    <Button
+        android:id="@+id/drawer_user_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/drawer_user_account_tv"
+        android:layout_alignParentRight="true"
+        android:text="注销" />
 
 </RelativeLayout>

@@ -21,8 +21,8 @@ public abstract class BaseFragment extends Fragment {
     private Unbinder mUnbinder;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void setArguments(Bundle args) {
+        super.setArguments(args);
         parseArguments();
     }
 

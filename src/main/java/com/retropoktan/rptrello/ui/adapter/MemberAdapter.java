@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.retropoktan.rptrello.R;
+import com.retropoktan.rptrello.inject.module.ClientApiModule;
 import com.retropoktan.rptrello.model.entity.Member;
 import com.retropoktan.rptrello.widget.BezelImageView;
 import com.squareup.picasso.Picasso;
@@ -41,7 +42,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, int position) {
         Member member = members.get(holder.getLayoutPosition());
         if (member != null) {
-            Picasso.with(mContext).load(member.getAvatar()).placeholder(new ColorDrawable(Color.GRAY)).into(holder.avatar);
+            Picasso.with(mContext).load(ClientApiModule.BASE + member.getAvatar()).placeholder(new ColorDrawable(Color.GRAY)).into(holder.avatar);
         }
     }
 

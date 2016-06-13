@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/tv_board_members"
+            style="@style/Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="48dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="Members"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/tv_board_activity"
+            style="@style/Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="48dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="Activity"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/tv_board_archived_task"
+            style="@style/Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="48dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="Archived Tasks"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/tv_board_settings"
+            style="@style/Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="48dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="Board Settings"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/tv_star_board"
+            style="@style/Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="48dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="Star Board"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/tv_share_board_link"
+            style="@style/Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="48dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="Share Board Link"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/tv_leave_board"
+            style="@style/Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="48dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="Leave Board"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

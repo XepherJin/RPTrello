@@ -22,9 +22,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class ClientApiModule {
 
+    public static final String BASE = "http://123.207.117.58:7000";
     private static final int API_VERSION = 1;
     private static final String API = "v" + API_VERSION;
-    private static final String BASE_URL = "http://203.88.161.15:7000/" + API + "/";
+    private static final String BASE_URL = BASE + "/" + API + "/";
 
     @Provides
     @PerDataManager

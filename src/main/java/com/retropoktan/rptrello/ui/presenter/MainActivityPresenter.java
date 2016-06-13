@@ -4,16 +4,29 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 
 import com.retropoktan.rptrello.R;
+import com.retropoktan.rptrello.model.UserModel;
+import com.retropoktan.rptrello.model.entity.Msg;
 import com.retropoktan.rptrello.ui.fragment.AllBoardsFragment;
 import com.retropoktan.rptrello.ui.fragment.AllTasksFragment;
 import com.retropoktan.rptrello.ui.fragment.AllTeamsFragment;
 import com.retropoktan.rptrello.ui.presenter.base.BasePresenter;
 import com.retropoktan.rptrello.ui.view.IMainView;
 
+import javax.inject.Inject;
+
+import rx.Subscription;
+
 /**
  * Created by RetroPoktan on 12/25/15.
  */
 public class MainActivityPresenter extends BasePresenter<IMainView> {
+
+    private final UserModel mUserModel;
+
+    @Inject
+    public MainActivityPresenter(UserModel userModel) {
+        mUserModel = userModel;
+    }
 
     public void switchFragment(MenuItem menuItem) {
         int itemId = parseItemId(menuItem.getItemId());
@@ -86,4 +99,23 @@ public class MainActivityPresenter extends BasePresenter<IMainView> {
         return mView.moveTaskToBack();
     }
 
+    public void initUser() {
+        mView.setUserView(mUserModel.getUser());
+    }
+
+    public void logout() {
+        mView.showLoading();
+        Subscription subscription = mUserModel.logout(new DefaultSubscriber<Msg>() {
+            @Override
+            protected void parseMsg(Msg msg) {
+                if (msg.isResultOK()) {
+                    mUserModel.deleteUser();
+                    mView.gotoLogin();
+                    return;
+                }
+                mView.showLoadingError(msg.getMsg());
+            }
+        });
+        addSubscription(subscription);
+    }
 }

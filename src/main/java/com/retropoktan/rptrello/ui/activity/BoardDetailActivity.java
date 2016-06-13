@@ -2,8 +2,11 @@ package com.retropoktan.rptrello.ui.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.retropoktan.rptrello.R;
@@ -13,6 +16,7 @@ import com.retropoktan.rptrello.model.entity.Board;
 import com.retropoktan.rptrello.model.entity.Card;
 import com.retropoktan.rptrello.ui.adapter.CardPagerAdapter;
 import com.retropoktan.rptrello.ui.base.BaseActivity;
+import com.retropoktan.rptrello.ui.fragment.BottomSheetFragment;
 import com.retropoktan.rptrello.ui.fragment.CardFragment;
 import com.retropoktan.rptrello.ui.inject.component.DaggerCardComponent;
 import com.retropoktan.rptrello.ui.inject.module.CardModule;
@@ -105,7 +109,7 @@ public class BoardDetailActivity extends BaseActivity implements IBoardDetailVie
     }
 
     private void onNavigationClick() {
-        finish();
+        ActivityCompat.finishAfterTransition(this);
     }
 
     @Override
@@ -147,6 +151,30 @@ public class BoardDetailActivity extends BaseActivity implements IBoardDetailVie
         }
         viewPager.setAdapter(new CardPagerAdapter(getSupportFragmentManager(), fragments));
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    public void showMoreMenu() {
+        BottomSheetFragment bottomSheetFragment = BottomSheetFragment.newInstance(R.layout.layout_sheet_board_detail);
+        bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_more, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_more:
+                presenter.showMoreMenu();
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return true;
     }
 
     @Override

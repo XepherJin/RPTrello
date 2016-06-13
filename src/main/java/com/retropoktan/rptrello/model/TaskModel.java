@@ -5,6 +5,7 @@ import com.retropoktan.rptrello.data.DataManager;
 import com.retropoktan.rptrello.model.entity.Comment;
 import com.retropoktan.rptrello.model.entity.Msg;
 import com.retropoktan.rptrello.model.entity.Task;
+import com.retropoktan.rptrello.model.req.CommentAddReq;
 
 import java.util.List;
 
@@ -37,6 +38,13 @@ public class TaskModel extends BaseModel {
 
     public Subscription getTaskComments(long taskId, Subscriber<Msg<List<Comment>>> subscriber) {
         return mDataManager.getClientApi().getTaskComments(taskId)
+                .subscribeOn(mIOScheduler)
+                .observeOn(mUIScheduler)
+                .subscribe(subscriber);
+    }
+
+    public Subscription sendComment(long taskId, CommentAddReq req, Subscriber<Msg<Comment>> subscriber) {
+        return mDataManager.getClientApi().sendComment(taskId, req)
                 .subscribeOn(mIOScheduler)
                 .observeOn(mUIScheduler)
                 .subscribe(subscriber);

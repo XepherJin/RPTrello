@@ -5,6 +5,7 @@ import com.retropoktan.rptrello.inject.component.ApplicationComponent;
 import com.retropoktan.rptrello.inject.module.ActivityModule;
 import com.retropoktan.rptrello.inject.scope.PerActivity;
 import com.retropoktan.rptrello.ui.activity.LoginActivity;
+import com.retropoktan.rptrello.ui.activity.MainActivity;
 import com.retropoktan.rptrello.ui.activity.RegisterActivity;
 import com.retropoktan.rptrello.ui.inject.module.UserModule;
 
@@ -18,5 +19,6 @@ import dagger.Component;
 public interface UserComponent extends ActivityComponent {
     void inject(LoginActivity loginActivity);
 
+    void inject(MainActivity mainActivity);
     void inject(RegisterActivity registerActivity);
 }

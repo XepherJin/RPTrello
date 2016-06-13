@@ -10,6 +10,7 @@ import com.retropoktan.rptrello.model.entity.Team;
 import com.retropoktan.rptrello.model.entity.User;
 import com.retropoktan.rptrello.model.req.BoardCreateReq;
 import com.retropoktan.rptrello.model.req.BoardUpdateReq;
+import com.retropoktan.rptrello.model.req.CommentAddReq;
 import com.retropoktan.rptrello.model.req.UserCreateReq;
 import com.retropoktan.rptrello.model.req.UserLoginReq;
 
@@ -38,6 +39,9 @@ public interface ClientApi {
 
     @POST("login")
     Observable<Msg<User>> login(@Body UserLoginReq req);
+
+    @GET("logout")
+    Observable<Msg> logout();
 
     //////////////// board //////////////
     @GET("project")
@@ -76,6 +80,12 @@ public interface ClientApi {
     @DELETE("mission/{id}")
     Observable<Msg> deleteTask(@Path("id") long taskId);
 
+    @PUT("mission/{id}/watcher")
+    Observable<Msg> likeTask(@Path("id") long taskId);
+
+    @DELETE("mission/{id}/watcher")
+    Observable<Msg> dislikeTask(@Path("id") long taskId);
+
     //////////////// card ///////////////////
     @GET("mission_list")
     Observable<Msg<List<Card>>> getBoardCards(@Query("belong_project") long boardId);
@@ -86,4 +96,7 @@ public interface ClientApi {
     //////////////// comment /////////////////
     @GET("mission/{id}/comments")
     Observable<Msg<List<Comment>>> getTaskComments(@Path("id") long taskId);
+
+    @POST("mission/{id}/comments")
+    Observable<Msg<Comment>> sendComment(@Path("id") long taskId, @Body CommentAddReq req);
 }

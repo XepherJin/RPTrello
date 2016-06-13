@@ -116,6 +116,14 @@
             android:inputType="textAutoCorrect|textCapSentences|textMultiLine"
             android:textColor="#666666"
             android:textColorHint="#666666" />
+
+        <Button
+            android:id="@+id/btn_add_comment"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ic_send_black"
+            android:visibility="gone" />
     </LinearLayout>
 
 </LinearLayout>

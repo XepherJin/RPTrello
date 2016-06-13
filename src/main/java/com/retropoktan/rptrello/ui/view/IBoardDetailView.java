@@ -11,4 +11,6 @@ public interface IBoardDetailView extends IView {
     void showEmpty();
 
     void setTabs(List<Card> list);
+
+    void showMoreMenu();
 }

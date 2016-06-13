@@ -11,6 +11,8 @@
     <!-- Settings -->
     <string name="settings">Settings</string>
 
+    <string name="more">more</string>
+
     <!-- Welcome -->
     <string name="Welcome_title_first">Hello RPTrello!</string>
     <string name="Welcome_content_first">Ready to start getting stuff done?</string>

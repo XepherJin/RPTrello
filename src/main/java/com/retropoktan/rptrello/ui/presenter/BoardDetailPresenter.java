@@ -50,4 +50,8 @@ public class BoardDetailPresenter extends BasePresenter<IBoardDetailView> {
         addSubscription(subscription);
     }
 
+    public void showMoreMenu() {
+        mView.showMoreMenu();
+    }
+
 }

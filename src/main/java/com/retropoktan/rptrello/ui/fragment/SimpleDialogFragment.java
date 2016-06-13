@@ -60,6 +60,7 @@ public class SimpleDialogFragment extends AppCompatDialogFragment {
             builder.setTitle(bundle.getCharSequence(ARG_TITLE));
             builder.setMessage(bundle.getCharSequence(ARG_MESSAGE));
             builder.setPositiveButton(bundle.getCharSequence(ARG_BUTTON_TEXT, "OK"), mOnClickListener);
+            builder.setNegativeButton("CANCEL", null);
             dialog = builder.create();
             dialog.setCanceledOnTouchOutside(false);
             return dialog;

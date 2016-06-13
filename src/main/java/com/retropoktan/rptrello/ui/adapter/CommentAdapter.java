@@ -8,11 +8,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.retropoktan.rptrello.R;
+import com.retropoktan.rptrello.inject.module.ClientApiModule;
 import com.retropoktan.rptrello.model.entity.Comment;
 import com.retropoktan.rptrello.model.entity.Task;
 import com.retropoktan.rptrello.widget.BezelImageView;
@@ -26,6 +28,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnFocusChange;
 
 /**
  * Created by RetroPoktan on 5/24/16.
@@ -63,16 +66,29 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof HeaderViewHolder) {
             if (mTask != null) {
                 ((HeaderViewHolder) holder).description.setText(mTask.getDescription());
                 ((HeaderViewHolder) holder).memberAdapter.addAll(mTask.getWorker());
+                ((HeaderViewHolder) holder).btnSend.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (onItemClickListener != null) {
+                            InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                            if (imm.isActive()) {
+                                imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
+                            }
+                            onItemClickListener.onSendComment(mTask.getId(), getComment());
+                            ((HeaderViewHolder) holder).addComment.setText("");
+                        }
+                    }
+                });
             }
             commentTxt = ((HeaderViewHolder) holder).addComment.getText();
         } else if (holder instanceof ViewHolder) {
             Comment comment = comments.get(getRealPosition(holder));
-            Picasso.with(mContext).load(comment.getMember().getAvatar()).placeholder(new ColorDrawable(Color.GRAY)).into(((ViewHolder) holder).avatar);
+            Picasso.with(mContext).load(ClientApiModule.BASE + comment.getMember().getAvatar()).placeholder(new ColorDrawable(Color.GRAY)).into(((ViewHolder) holder).avatar);
             ((ViewHolder) holder).name.setText(comment.getMember().getNick());
             ((ViewHolder) holder).body.setText(comment.getComment());
             ((ViewHolder) holder).time.setText(comment.getCreateTime());
@@ -105,6 +121,11 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         notifyItemChanged(0);
     }
 
+    public void addNewComment(Comment comment) {
+        comments.add(0, comment);
+        notifyItemInserted(0);
+    }
+
     @Override
     public int getItemViewType(int position) {
         if (position == 0) {
@@ -122,8 +143,14 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         onItemClickListener = l;
     }
 
+    public void clearCommentEdit() {
+
+    }
+
     public interface OnClickListeners {
         void onItemClick(Comment comment, int i);
+
+        void onSendComment(long taskId, CharSequence txt);
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -155,12 +182,15 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         Button showDetail;
         @BindView(R.id.et_add_comment)
         EditText addComment;
+        @BindView(R.id.btn_add_comment)
+        Button btnSend;
         MemberAdapter memberAdapter;
 
         public HeaderViewHolder(View itemView, Context context) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             memberAdapter = new MemberAdapter(context);
+
             // disable nest scroll event
             member.setNestedScrollingEnabled(false);
 
@@ -169,5 +199,15 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             member.setLayoutManager(new FullyGridLayoutManager(context, 6));
             member.setAdapter(memberAdapter);
         }
+
+        @OnFocusChange(R.id.et_add_comment)
+        void onFocusChanged(boolean focused) {
+            if (focused) {
+                btnSend.setVisibility(View.VISIBLE);
+            } else {
+                btnSend.setVisibility(View.GONE);
+            }
+        }
+
     }
 }

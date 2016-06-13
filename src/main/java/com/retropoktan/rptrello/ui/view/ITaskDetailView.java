@@ -15,4 +15,16 @@ public interface ITaskDetailView extends IAdapterView {
     Context getContext();
 
     void showContent(List<Comment> list);
+
+    void showOperationResult(CharSequence result);
+
+    void setFABLike();
+
+    void setFABDislike();
+
+    void showBottomSheet();
+
+    void addNewComment(Comment comment);
+
+    void clearText();
 }

@@ -61,29 +61,57 @@
         </LinearLayout>
 
         <com.retropoktan.rptrello.widget.BezelImageView
+            android:id="@+id/iv_task_member_1"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center_vertical|right"
             android:layout_margin="2dp"
             android:src="@android:color/holo_green_dark"
+            android:visibility="invisible"
             app:maskDrawable="@drawable/avatar_circle_mask"
             app:setOutline="false" />
 
         <com.retropoktan.rptrello.widget.BezelImageView
+            android:id="@+id/iv_task_member_2"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center_vertical|right"
             android:layout_margin="2dp"
             android:src="@android:color/holo_red_dark"
+            android:visibility="invisible"
             app:maskDrawable="@drawable/avatar_circle_mask"
             app:setOutline="false" />
 
         <com.retropoktan.rptrello.widget.BezelImageView
+            android:id="@+id/iv_task_member_3"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center_vertical|right"
             android:layout_margin="2dp"
             android:src="@android:color/holo_orange_dark"
+            android:visibility="invisible"
+            app:maskDrawable="@drawable/avatar_circle_mask"
+            app:setOutline="false" />
+
+        <com.retropoktan.rptrello.widget.BezelImageView
+            android:id="@+id/iv_task_member_4"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical|right"
+            android:layout_margin="2dp"
+            android:src="@android:color/holo_orange_dark"
+            android:visibility="invisible"
+            app:maskDrawable="@drawable/avatar_circle_mask"
+            app:setOutline="false" />
+
+        <com.retropoktan.rptrello.widget.BezelImageView
+            android:id="@+id/iv_task_member_5"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical|right"
+            android:layout_margin="2dp"
+            android:src="@android:color/holo_orange_dark"
+            android:visibility="invisible"
             app:maskDrawable="@drawable/avatar_circle_mask"
             app:setOutline="false" />
 

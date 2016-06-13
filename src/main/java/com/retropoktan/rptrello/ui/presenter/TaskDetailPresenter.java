@@ -1,10 +1,12 @@
 package com.retropoktan.rptrello.ui.presenter;
 
+import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.retropoktan.rptrello.model.TaskModel;
 import com.retropoktan.rptrello.model.entity.Comment;
 import com.retropoktan.rptrello.model.entity.Msg;
+import com.retropoktan.rptrello.model.req.CommentAddReq;
 import com.retropoktan.rptrello.ui.presenter.base.BasePresenter;
 import com.retropoktan.rptrello.ui.view.ITaskDetailView;
 import com.retropoktan.rptrello.utils.DisplayUtil;
@@ -59,8 +61,46 @@ public class TaskDetailPresenter extends BasePresenter<ITaskDetailView> {
         addSubscription(subscription);
     }
 
+    public void sendComment(long taskId, CharSequence comment) {
+        CommentAddReq req = new CommentAddReq();
+        if (!TextUtils.isEmpty(comment)) {
+            req.setComment(comment.toString());
+        }
+        Subscription subscription = mTaskModel.sendComment(taskId, req, new DefaultSubscriber<Msg<Comment>>() {
+            @Override
+            protected void parseMsg(Msg<Comment> msg) {
+                if (msg.isResultOK()) {
+                    Comment comment = msg.getData();
+                    if (comment != null) {
+                        mView.addNewComment(comment);
+                        mView.clearText();
+                        return;
+                    }
+                    mView.showEmpty();
+                    return;
+                }
+                mView.showLoadingError(msg.getMsg());
+            }
+        });
+        addSubscription(subscription);
+    }
+
     public void onCommentClick(Comment comment, int i) {
 
+    }
+
+    public void likeTask() {
+        mView.showOperationResult("关注成功");
+        mView.setFABLike();
+    }
+
+    public void dislikeTask() {
+        mView.showOperationResult("取消关注成功");
+        mView.setFABDislike();
+    }
+
+    public void showMoreMenu() {
+        mView.showBottomSheet();
     }
 
 }

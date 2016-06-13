@@ -30,6 +30,13 @@ public class UserModel extends BaseModel {
                 .subscribe(subscriber);
     }
 
+    public Subscription logout(Subscriber subscriber) {
+        return mDataManager.getClientApi().logout()
+                .subscribeOn(mIOScheduler)
+                .observeOn(mUIScheduler)
+                .subscribe(subscriber);
+    }
+
     public Subscription getCode(String email, Subscriber<Msg> subscriber) {
         return mDataManager.getClientApi().getCode(email)
                 .subscribeOn(mIOScheduler)
@@ -51,6 +58,19 @@ public class UserModel extends BaseModel {
         mUser.setNick(user.getNick());
         mUser.setToken(user.getToken());
         mDataManager.setToken(user.getToken());
+        mDataManager.getDBHelper().refresh(User.TAG, mUser);
+    }
+
+    public User getUser() {
+        return mUser;
+    }
+
+    public void deleteUser() {
+        mUser.setId(0L);
+        mUser.setToken(null);
+        mUser.setAvatar(null);
+        mUser.setEmail(null);
+        mUser.setNick(null);
         mDataManager.getDBHelper().refresh(User.TAG, mUser);
     }
 

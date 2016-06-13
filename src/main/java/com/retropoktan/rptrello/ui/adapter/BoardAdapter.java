@@ -1,6 +1,8 @@
 package com.retropoktan.rptrello.ui.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,9 +12,11 @@ import android.widget.TextView;
 
 import com.retropoktan.rptrello.R;
 import com.retropoktan.rptrello.model.entity.Board;
+import com.retropoktan.rptrello.widget.BezelImageView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.inject.Inject;
 
@@ -49,6 +53,9 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
         if (board != null) {
             holder.name.setText(board.getName());
             holder.desc.setText(board.getDescription());
+            Random rnd = new Random();
+            int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+            holder.pic.setImageDrawable(new ColorDrawable(color));
         }
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +100,8 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
         TextView name;
         @BindView(R.id.cv_board_description)
         TextView desc;
+        @BindView(R.id.iv_board)
+        BezelImageView pic;
 
         public ViewHolder(View itemView) {
             super(itemView);

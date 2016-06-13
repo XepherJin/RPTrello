@@ -3,6 +3,8 @@ package com.retropoktan.rptrello.ui.view;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
+import com.retropoktan.rptrello.model.entity.User;
+
 /**
  * Created by RetroPoktan on 4/8/16.
  */
@@ -34,4 +36,8 @@ public interface IMainView extends IView {
     void goSettings();
 
     void goAbout();
+
+    void setUserView(User user);
+
+    void gotoLogin();
 }

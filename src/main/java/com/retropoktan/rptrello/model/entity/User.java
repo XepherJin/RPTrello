@@ -54,4 +54,5 @@ public class User extends Member implements Parcelable {
         super.writeToParcel(dest, flags);
         dest.writeString(token);
     }
+
 }
